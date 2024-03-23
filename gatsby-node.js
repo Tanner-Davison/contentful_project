@@ -1,5 +1,5 @@
 const path = require(`path`);
-
+const { createFilePath } = require('gatsby-source-filesystem');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
@@ -18,7 +18,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const blogPostQuery = await graphql(`
     query {
-      allContentfulBlogPost {
+      allContentfulBlogpost {
         edges {
           node {
             slug
@@ -34,25 +34,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  homepageQuery.data.allContentfulHomepage.edges.forEach((edge) => {
+  homepageQuery.data?.allContentfulHomepage?.edges.forEach((edge) => {
     const slug = edge.node.slug || 'empty';
-
+    console.log(slug)
     createPage({
-      path: slug,
+      path: `${slug}`,
       component: path.resolve('./src/pages/contentful-post.js'),
       context: {
-        title: 'test',
         slug: slug,
       },
     });
   });
 
-  blogPostQuery.data.allContentfulBlogpost.edges.forEach((edge) => {
+  blogPostQuery.data?.allContentfulBlogpost?.edges.forEach((edge) => {
     const slug = edge.node.slug || 'empty';
 
     createPage({
-      path: `/blog/${slug}`,
-      component: path.resolve('./src/pages/blog-post.js'),
+      path: `blog${slug}`,
+      component: path.resolve('./src/templates/blog-post.js'),
       context: {
         title: 'test',
         slug: slug,

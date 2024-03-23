@@ -10,7 +10,7 @@ const BlogIndex = ({ data, location }) => {
   const contentfulHomepage = data.contentfulHomepage
 
   const title = contentfulHomepage?.title
-  const content = JSON.parse(contentfulHomepage?.content?.body?.raw, null, 2)
+  const content = JSON.parse(contentfulHomepage?.body?.raw, null, 2)
 
   console.log(content)
 
@@ -51,7 +51,7 @@ export const Head = () => <Seo title="All posts" />
 
 export const pageQuery = graphql`
   {
-    contentfulHomepage(id: { eq: "443cd2c7-41c5-55b3-9dfe-e6a8500d23d2" }) {
+    contentfulHomepage(id: { eq: "18e36f21-fcad-5752-b645-5ad96545230f" }) {
       id
       header
       heroImage {

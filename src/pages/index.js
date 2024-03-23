@@ -44,7 +44,7 @@ export const pageQuery = graphql`query {allContentfulHomepage {
   edges {
     node {
       slug,
-      header
+      
     }
   }
 }}`

@@ -27,7 +27,7 @@ const BlogPostTemplate = ({data}) => {
     <Layout >
     <ol style={{ listStyle: `none` }}>
 
-          <li key={contentfullBlogpost.id}>
+          <li key={contentfulBlogpost.id}>
             <article
               className="post-list-item"
               itemScope
