@@ -11,7 +11,7 @@ import text from "styles/text"
 const ContentfulPost = ({ data }) => {
   const siteTitle = data?.site?.siteMetadata?.title || `Title`
   const { contentfulPage } = data
-  const content = JSON.parse(contentfulPage?.body?.raw, null, 2)
+  const content = contentfulPage?.body?.raw && JSON.parse(contentfulPage?.body?.raw, null, 2)
 
   const text = {
     eyebrow: contentfulPage?.eyebrow,
