@@ -4,9 +4,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   // Query for different types of content
-  const homepageQuery = await graphql(`
+  const pageQuery = await graphql(`
     query {
-      allContentfulHomepage {
+      allContentfulPage {
         edges {
           node {
             slug
@@ -29,19 +29,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `);
 
   // Create pages based on the query results
-  if (homepageQuery.errors || blogPostQuery.errors) {
+  if (pageQuery.errors || blogPostQuery.errors) {
     reporter.panicOnBuild('Error while running GraphQL query.');
     return;
   }
 
-  homepageQuery.data?.allContentfulHomepage?.edges.forEach((edge) => {
+  pageQuery.data?.allContentfulPage?.edges.forEach((edge) => {
     const slug = edge.node.slug || 'empty';
-    console.log(slug)
     createPage({
-      path: `${slug}`,
-      component: path.resolve('./src/pages/contentful-post.js'),
+      path: slug,
+      component: path.resolve('./src/templates/contentful-post.js'),
       context: {
-        slug: slug,
+        slug: slug.toString(),
       },
     });
   });

@@ -7,7 +7,7 @@ import Seo from "../components/seo"
 const BlogIndex = ({ data }) => {
 
   const posts = data?.allContentfulPage?.edges;
-
+console.log(posts)
   return (
     <Layout>
     <ol style={{ listStyle: `none` }}>
@@ -23,9 +23,9 @@ const BlogIndex = ({ data }) => {
             >
               <header>
                 <h2>
-                  <Link to={ post?.node?.slug} itemProp="url">
+                  {/* <Link to={ post?.node?.slug.toString()} itemProp="url">
                     <span itemProp="headline">{title}</span>
-                  </Link>
+                  </Link> */}
                 </h2>
               </header>
             </article>
@@ -43,8 +43,7 @@ export const Head = () => <Seo title="All posts" />
 export const pageQuery = graphql`query {allContentfulPage {
   edges {
     node {
-      slug,
-      
+      slug
     }
   }
 }}`

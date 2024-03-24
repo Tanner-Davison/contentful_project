@@ -10,7 +10,7 @@ module.exports = {
       summary: `living life || writing code`,
     },
     description: `First Contentful Site`,
-    siteUrl: `http://chattychatter.com`,
+    siteUrl: `http://readytocode.netlify.app`,
     social: {
       twitter: `tannerdavison`,
     },

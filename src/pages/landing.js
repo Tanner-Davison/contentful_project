@@ -29,13 +29,6 @@ const BlogIndex = ({ data, location }) => {
               </h2>
             </header>
             <section>
-              {/* <p
-                    dangerouslySetInnerHTML={{
-                      __html: content,
-                    }}
-                    itemProp="description"
-                  /> */}
-
               {documentToReactComponents(content)}
             </section>
           </article>

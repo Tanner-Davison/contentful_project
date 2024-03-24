@@ -10,8 +10,7 @@ import text from "styles/text"
 
 const ContentfulPost = ({ data }) => {
   const siteTitle = data?.site?.siteMetadata?.title || `Title`
-  const contentfulPage = data.contentfulPage;
-
+  const {contentfulPage}= data;
   const header = contentfulPage?.header
   const content = JSON.parse(contentfulPage?.body?.raw, null, 2)
   const bodyHeadline = contentfulPage?.bodyHeader;
@@ -75,19 +74,18 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `
-
 export const query = graphql`
-  query ($slug: String) {
-    contentfulPage(slug: { eq: $slug }) {
-      id
-      header
-      heroImage {
-        url
-      }
-      bodyHeader
-      body {
-        raw
-      }
+  query($slug: String!){
+  contentfulPage(slug: {eq: $slug}) {
+    id
+    body {
+      raw
     }
+    header
+    heroImage {
+      url
+    }
+    bodyHeader
   }
+}
 `
