@@ -6,7 +6,7 @@ import Seo from "../components/seo"
 
 const BlogIndex = ({ data }) => {
 
-  const posts = data?.allContentfulHomepage?.edges;
+  const posts = data?.allContentfulPage?.edges;
 
   return (
     <Layout>
@@ -40,7 +40,7 @@ export default BlogIndex
 
 export const Head = () => <Seo title="All posts" />
 
-export const pageQuery = graphql`query {allContentfulHomepage {
+export const pageQuery = graphql`query {allContentfulPage {
   edges {
     node {
       slug,

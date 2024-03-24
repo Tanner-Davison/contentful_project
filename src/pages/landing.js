@@ -7,17 +7,17 @@ import Seo from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data?.site?.siteMetadata?.title || `Title`
-  const contentfulHomepage = data.contentfulHomepage
+  const contentfulPage = data.contentfulPage
 
-  const title = contentfulHomepage?.title
-  const content = JSON.parse(contentfulHomepage?.body?.raw, null, 2)
+  const title = contentfulPage?.title
+  const content = JSON.parse(contentfulPage?.body?.raw, null, 2)
 
   console.log(content)
 
   return (
     <Layout>
       <ol style={{ listStyle: `none` }}>
-        <li key={contentfulHomepage.id}>
+        <li key={contentfulPage.id}>
           <article
             className="post-list-item"
             itemScope
@@ -51,7 +51,7 @@ export const Head = () => <Seo title="All posts" />
 
 export const pageQuery = graphql`
   {
-    contentfulHomepage(id: { eq: "18e36f21-fcad-5752-b645-5ad96545230f" }) {
+    contentfulPage(id: { eq: "18e36f21-fcad-5752-b645-5ad96545230f" }) {
       id
       header
       heroImage {

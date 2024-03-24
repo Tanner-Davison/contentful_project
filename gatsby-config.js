@@ -16,6 +16,7 @@ module.exports = {
     },
   },
   plugins: [
+    "gatsby-plugin-styled-components",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -69,6 +70,24 @@ module.exports = {
           },
           `gatsby-remark-prismjs`,
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [`Orbitron`, `Archivo`, `Roboto Mono`],
+      },  
+    },
+    {
+      resolve: 'gatsby-plugin-alias-imports',
+      options: {
+        alias: {
+          'components': 'src/components',
+          'styles': 'src/styles',
+          'utils': 'src/utils',
+          // add more aliases here as needed
+        },
+        extensions: ['js', 'jsx'],
       },
     },
     `gatsby-transformer-sharp`,
