@@ -13,7 +13,6 @@ const PageComponents = ({ content }) => {
   // Accessing the nested sections array
   
   const sections = content[0]?.sections || [];
-console.log(sections)
   return (
     <div className='page-content'>
       {sections.map((section, index) => (
@@ -33,7 +32,7 @@ const ContentfulPost = ({ data }) => {
   `
   return (
     <Layout>
-      {contentfulPage?.header && <Headline>{contentfulPage?.header}</Headline>}
+      <Headline>{'Hey there'}</Headline>
       <PageComponents content={availableComponents} />
     </Layout>
   )
@@ -42,7 +41,6 @@ const ContentfulPost = ({ data }) => {
 export const query = graphql`
   query Components($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
-      header
     availableComponents {
       sections {
         ... on ContentfulContentAndImage {
