@@ -7,20 +7,52 @@ import styled from "styled-components"
 import media from "styles/media"
 import colors from "styles/colors"
 import text from "styles/text"
+import PagesContent from "../components/PagesContent"
 
-const ContentfulPost = ({ data }) => {
-
+const PageComponents = ({ content }) => {
+  // Accessing the nested sections array
+  const sections = content[0]?.sections || [];
 
   return (
-<div>hello</div>
+    <div className='page-content'>
+      {sections.map((section, index) => (
+        <PagesContent key={index} section={section} />
+      ))}
+    </div>
+  );
+};
+
+const ContentfulPost = ({ data }) => {
+  const { contentfulPage } = data;
+  const { availableComponents } = contentfulPage || {};
+
+  return (
+    <Layout>
+      <PageComponents content={availableComponents} />
+    </Layout>
   )
 }
-export default ContentfulPost
 
 export const query = graphql`
-  query ($slug: String!) {
+  query Components($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
-      id
-  }
+      availableComponents {
+        sections {
+          ... on ContentfulContentAndImage {
+            componentTitle
+            body {
+              raw
+            }
+            bodyHeader
+          }
+          ... on ContentfulSimpleCentered {
+            headline
+            componentTitle
+          }
+        }
+      }
+    }
   }
 `
+
+export default ContentfulPost
