@@ -7,7 +7,7 @@ import text from "styles/text"
 
 const ContentfulPost = ({ content }) => {
   const siteTitle = content?.site?.siteMetadata?.title || `Title`
-
+  console.log(content)
   const parsedBody =
     content?.body?.raw && JSON.parse(content?.body?.raw, null, 2)
 
@@ -19,7 +19,7 @@ const ContentfulPost = ({ content }) => {
     body: documentToReactComponents(parsedBody),
   }
   const image = {
-    url: content?.heroImage?.url,
+    url: content?.image?.url,
     alt: content?.heroImage?.alt,
     orientation: content?.imageOrientation,
   }
@@ -37,7 +37,7 @@ const ContentfulPost = ({ content }) => {
         {image.url && (
           <HeroImage
             src={image.url}
-            alt={image.alt}
+            alt={'hello'}
             $orientation={image.orientation}
           />
         )}
@@ -49,7 +49,7 @@ export default ContentfulPost
 const Header = styled.h1`
   ${text.h1}
   text-align:center;
-  max-width: 60vw;
+  
 `
 const HeroImage = styled.img.attrs(props => ({
   width: props.$orientation ? "27.778vw" : "40%",
@@ -63,7 +63,6 @@ const BodyHeadline = styled.p`
 `
 const Body = styled.div`
   ${text.bodyM};
-  max-width: 34.722vw;
   b {
     font-weight: bolder;
     font-size: larger;
@@ -79,6 +78,7 @@ const ImageAndContent = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5.083vw;
+  width:80vw;
 `
 const Wrapper = styled.div`
   display: flex;

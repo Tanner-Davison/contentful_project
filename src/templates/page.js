@@ -25,9 +25,13 @@ const PageComponents = ({ content }) => {
 const ContentfulPost = ({ data }) => {
   const { contentfulPage } = data;
   const { availableComponents } = contentfulPage || {};
-
+  const Headline = styled.h2`
+  ${text.h2}
+  text-align: center;
+  `
   return (
     <Layout>
+      {contentfulPage?.header && <Headline>{contentfulPage.header}</Headline>}
       <PageComponents content={availableComponents} />
     </Layout>
   )
@@ -36,6 +40,7 @@ const ContentfulPost = ({ data }) => {
 export const query = graphql`
   query Components($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
+      header
       availableComponents {
         sections {
           ... on ContentfulContentAndImage {
@@ -44,6 +49,12 @@ export const query = graphql`
               raw
             }
             bodyHeader
+            image{
+              url
+            }
+            imageOrientation
+            headerColor
+            spacing
           }
           ... on ContentfulSimpleCentered {
             headline
