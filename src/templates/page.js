@@ -22,4 +22,5 @@ export const query = graphql`
     contentfulPage(slug: { eq: $slug }) {
       id
   }
+  }
 `
