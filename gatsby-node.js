@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const slug = edge.node.slug || 'empty';
     createPage({
       path: slug,
-      component: path.resolve('./src/templates/contentful-post.js'),
+      component: path.resolve('./src/templates/page.js'),
       context: {
         slug: slug.toString(),
       },
