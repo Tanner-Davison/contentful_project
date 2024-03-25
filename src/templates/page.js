@@ -54,6 +54,7 @@ export const query = graphql`
             }
             imageOrientation
             headerColor
+            contentSide
             spacing
           }
           ... on ContentfulSimpleCentered {
