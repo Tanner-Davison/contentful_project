@@ -12,7 +12,7 @@ import PagesContent from "../components/PagesContent"
 const PageComponents = ({ content }) => {
   // Accessing the nested sections array
   
-  const sections = content[0]?.sections || [];
+  const sections = content;
   return (
     <div className='page-content'>
       {sections.map((section, index) => (
@@ -25,7 +25,7 @@ const PageComponents = ({ content }) => {
 const ContentfulPost = ({ data }) => {
   const { contentfulPage } = data;
   const availableComponents = contentfulPage.availableComponents || {};
-  console.log({LOOKHERE: availableComponents})
+  console.log({LOOKHERE: availableComponents?.sections})
   const Headline = styled.h2`
   ${text.h2}
   text-align: center;
@@ -33,7 +33,7 @@ const ContentfulPost = ({ data }) => {
   return (
     <Layout>
       <Headline>{'Hey there'}</Headline>
-      <PageComponents content={availableComponents} />
+      <PageComponents content={availableComponents?.sections} />
     </Layout>
   )
 }
