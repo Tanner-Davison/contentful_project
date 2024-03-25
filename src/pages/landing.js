@@ -10,7 +10,7 @@ const BlogIndex = ({ data, location }) => {
   const contentfulPage = data.contentfulPage
 
   const title = contentfulPage?.title
-  const content = JSON.parse(contentfulPage?.body?.raw, null, 2)
+
 
   console.log(content)
 
@@ -29,7 +29,7 @@ const BlogIndex = ({ data, location }) => {
               </h2>
             </header>
             <section>
-              {documentToReactComponents(content)}
+            
             </section>
           </article>
         </li>
