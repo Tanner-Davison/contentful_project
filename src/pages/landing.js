@@ -14,7 +14,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout>
       <ol style={{ listStyle: `none` }}>
-        <li key={contentfulPage.id}>
+        <li key={contentfulPage?.id}>
           <article
             className="post-list-item"
             itemScope
@@ -41,7 +41,7 @@ export const Head = () => <Seo title="All posts" />
 
 export const pageQuery = graphql`
   {
-    contentfulPage(id: { eq: "18e36f21-fcad-5752-b645-5ad96545230f" }) {
+    contentfulPage {
       id
       header
     }
