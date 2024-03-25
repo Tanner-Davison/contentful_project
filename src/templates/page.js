@@ -10,12 +10,9 @@ import text from "styles/text"
 import PagesContent from "../components/PagesContent"
 
 const PageComponents = ({ content }) => {
-  // Accessing the nested sections array
-  
-  const sections = content;
   return (
-    <div className='page-content'>
-      {sections.map((section, index) => (
+    <div>
+      {content.map((section, index) => (
         <PagesContent key={index} section={section} />
       ))}
     </div>
@@ -23,48 +20,48 @@ const PageComponents = ({ content }) => {
 };
 
 const ContentfulPost = ({ data }) => {
+  console.log({initialData:data})
   const { contentfulPage } = data;
-  const availableComponents = contentfulPage.availableComponents || {};
-  console.log({LOOKHERE: availableComponents?.sections})
+  const {availableComponents} = contentfulPage;
   const Headline = styled.h2`
   ${text.h2}
   text-align: center;
   `
   return (
     <Layout>
-      <Headline>{'Hey there'}</Headline>
+      {data?.header && <Headline>{data.header}</Headline>}
       <PageComponents content={availableComponents?.sections} />
     </Layout>
   )
 }
 
 export const query = graphql`
-  query Components($slug: String!) {
+  query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
-    availableComponents {
-      sections {
-        ... on ContentfulContentAndImage {
-          id
-          componentTitle
-          body {
-            raw
+      header
+      availableComponents {
+        sections {
+          ... on ContentfulContentAndImage {
+            id
+            componentTitle
+            body {
+              raw
+            }
+            bodyHeader
+            contentSide
+            image {
+              url
+            }
+            imageOrientation
           }
-          bodyHeader
-          contentSide
-          image {
-            url
+          ... on ContentfulSimpleCentered {
+            id
+            componentTitle
+            headline
           }
-          imageOrientation
-        }
-        ... on ContentfulSimpleCentered {
-          id
-          componentTitle
-          headline
-        }
       }
-    }
+      }
     }
   }
 `
-
 export default ContentfulPost
