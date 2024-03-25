@@ -11,9 +11,6 @@ const BlogIndex = ({ data, location }) => {
 
   const title = contentfulPage?.title
 
-
-  console.log(content)
-
   return (
     <Layout>
       <ol style={{ listStyle: `none` }}>
