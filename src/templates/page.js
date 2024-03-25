@@ -11,8 +11,9 @@ import PagesContent from "../components/PagesContent"
 
 const PageComponents = ({ content }) => {
   // Accessing the nested sections array
+  
   const sections = content[0]?.sections || [];
-
+console.log(sections)
   return (
     <div className='page-content'>
       {sections.map((section, index) => (
@@ -31,7 +32,7 @@ const ContentfulPost = ({ data }) => {
   `
   return (
     <Layout>
-      {contentfulPage?.header && <Headline>{contentfulPage.header}</Headline>}
+      {contentfulPage?.header && <Headline>{contentfulPage?.header}</Headline>}
       <PageComponents content={availableComponents} />
     </Layout>
   )
