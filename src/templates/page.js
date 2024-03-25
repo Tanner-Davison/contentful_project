@@ -25,7 +25,8 @@ console.log(sections)
 
 const ContentfulPost = ({ data }) => {
   const { contentfulPage } = data;
-  const { availableComponents } = contentfulPage || {};
+  const availableComponents = contentfulPage.availableComponents || {};
+  console.log({LOOKHERE: availableComponents})
   const Headline = styled.h2`
   ${text.h2}
   text-align: center;
