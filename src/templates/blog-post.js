@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 
 const BlogPostTemplate = ({data}) => {
 
-  const contentfulBlogpost = data.contentfulBlogpost
+  const contentfulBlogpost = data?.contentfulBlogpost
 
   const title = contentfulBlogpost?.title || ' title';
   const content = JSON.parse(contentfulBlogpost?.body?.raw, null, 2);

@@ -17,17 +17,18 @@ const ContentfulPost = ({ content }) => {
     headline: content?.bodyHeader,
     color: content?.colors,
     body: documentToReactComponents(parsedBody),
+    side: content?.contentSide,
   }
   const image = {
     url: content?.image?.url,
-    alt: content?.alt,
+    alt: content?.image?.alt,
     orientation: content?.imageOrientation,
   }
 
   return (
     <Wrapper>
       {text.header && <Header>{text.header}</Header>}
-      <ImageAndContent>
+      <ImageAndContent $side={text.side}>
         <BodyWrapper>
           {text.headline && (
             <BodyHeadline $color={text.color}>{text.headline}</BodyHeadline>
@@ -37,7 +38,7 @@ const ContentfulPost = ({ content }) => {
         {image.url && (
           <HeroImage
             src={image.url}
-            alt={'hello'}
+            alt={"hello"}
             $orientation={image.orientation}
           />
         )}
@@ -49,7 +50,6 @@ export default ContentfulPost
 const Header = styled.h1`
   ${text.h1}
   text-align:center;
-  
 `
 const HeroImage = styled.img.attrs(props => ({
   width: props.$orientation ? "27.778vw" : "40%",
@@ -75,10 +75,11 @@ const BodyWrapper = styled.div`
 const ImageAndContent = styled.div`
   position: relative;
   display: flex;
+  flex-direction: ${props=> props.$side ? 'row-reverse':'row'};
   align-items: center;
   justify-content: center;
   gap: 5.083vw;
-  width:80vw;
+  width: 80vw;
 `
 const Wrapper = styled.div`
   display: flex;
