@@ -42,28 +42,28 @@ export const query = graphql`
   query Components($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       header
-      availableComponents {
-        sections {
-          ... on ContentfulContentAndImage {
-            componentTitle
-            body {
-              raw
-            }
-            bodyHeader
-            image{
-              url
-            }
-            imageOrientation
-            headerColor
-            contentSide
-            spacing
+    availableComponents {
+      sections {
+        ... on ContentfulContentAndImage {
+          id
+          componentTitle
+          body {
+            raw
           }
-          ... on ContentfulSimpleCentered {
-            headline
-            componentTitle
+          bodyHeader
+          contentSide
+          image {
+            url
           }
+          imageOrientation
+        }
+        ... on ContentfulSimpleCentered {
+          id
+          componentTitle
+          headline
         }
       }
+    }
     }
   }
 `
