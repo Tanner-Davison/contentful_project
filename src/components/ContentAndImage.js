@@ -20,7 +20,7 @@ const ContentfulPost = ({ content }) => {
   }
   const image = {
     url: content?.image?.url,
-    alt: content?.heroImage?.alt,
+    alt: content?.alt,
     orientation: content?.imageOrientation,
   }
 
