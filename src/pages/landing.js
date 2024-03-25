@@ -47,12 +47,6 @@ export const pageQuery = graphql`
     contentfulPage(id: { eq: "18e36f21-fcad-5752-b645-5ad96545230f" }) {
       id
       header
-      heroImage {
-        url
-      }
-      body {
-        raw
-      }
     }
   }
 `

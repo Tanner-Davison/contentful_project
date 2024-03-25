@@ -21,17 +21,5 @@ export const query = graphql`
   query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       id
-      body {
-        raw
-      }
-      header
-      heroImage {
-        url
-        description
-      }
-      imageOrientation
-      bodyHeader
-      colors
-    }
   }
 `
