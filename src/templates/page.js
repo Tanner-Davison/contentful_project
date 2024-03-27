@@ -30,10 +30,14 @@ const ContentfulPost = ({ data }) => {
   text-align: center;
   `
   return (
+    <>
+     {typeof window !== "undefined" &&
     <Layout>
       {data?.header && <Headline>{data.header}</Headline>}
       <PageComponents content={field_section[0]?.fieldSection} />
     </Layout>
+  }
+    </>
   )
 }
 
