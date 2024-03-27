@@ -4,6 +4,8 @@ import media from 'styles/media';
 import colors from 'styles/colors';
 import text from 'styles/text';
 const SimpleCentered = ({content}) => {
+  console.log(content);
+  
   return (
     <Wrapper>
       <Headline>{content.headline}</Headline>

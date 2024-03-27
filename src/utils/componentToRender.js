@@ -6,9 +6,9 @@ export const componentToRender = (component, content) => {
   console.log(component);
   
     switch (component) {
-      case 'contentAndImage':
+      case 'Content_And_Image':
         return <ContentAndImage content={content}/>;
-        case 'simpleCentered':
+        case 'Simple_Centered':
           return <SimpleCentered content={content}/>;
       default:
         return '';

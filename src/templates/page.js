@@ -10,6 +10,8 @@ import text from "styles/text"
 import PagesContent from "../components/PagesContent"
 
 const PageComponents = ({ content }) => {
+  console.log(content);
+  
   return (
     <div>
       {content.map((section, index) => (
@@ -22,7 +24,7 @@ const PageComponents = ({ content }) => {
 const ContentfulPost = ({ data }) => {
   console.log({initialData:data})
   const { contentfulPage } = data;
-  const {availableComponents} = contentfulPage;
+  const {field_section} = contentfulPage;
   const Headline = styled.h2`
   ${text.h2}
   text-align: center;
@@ -30,7 +32,7 @@ const ContentfulPost = ({ data }) => {
   return (
     <Layout>
       {data?.header && <Headline>{data.header}</Headline>}
-      <PageComponents content={availableComponents?.sections} />
+      <PageComponents content={field_section[0]?.fieldSection} />
     </Layout>
   )
 }
@@ -39,28 +41,31 @@ export const query = graphql`
   query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       header
-      availableComponents {
-        sections {
-          ... on ContentfulContentAndImage {
-            id
-            componentTitle
-            body {
-              raw
-            }
-            bodyHeader
-            contentSide
-            image {
-              url
-            }
-            imageOrientation
+    slug
+    field_section {
+      fieldSection {
+        ... on ContentfulContentAndImage {
+          id
+          body {
+            raw
           }
-          ... on ContentfulSimpleCentered {
-            id
-            componentTitle
-            headline
+          bodyHeader
+          componentTitle
+          headerColor
+          contentSide
+          imageOrientation
+          image {
+            url
           }
+          spacing
+        }
+        ... on ContentfulSimpleCentered {
+          id
+          headline
+          componentTitle
+        }
       }
-      }
+    }
     }
   }
 `
