@@ -20,24 +20,20 @@ const PageComponents = ({ content }) => {
 };
 
 const ContentfulPost = ({ data }) => {
-  console.log({initialData:data})
   const { contentfulPage } = data;
   const {field_section} = contentfulPage;
-  console.log(field_section[0].fieldSection);
-  
-  
-  const Headline = styled.h2`
-  ${text.h2}
-  text-align: center;
-  `
+  const {fieldSection} = field_section[0]
   return (
     <Layout>
       {data?.header && <Headline>{data.header}</Headline>}
-      <PageComponents content={field_section[0].fieldSection} />
+      <PageComponents content={fieldSection} />
     </Layout>
   )
 }
-
+const Headline = styled.h2`
+${text.h2}
+text-align: center;
+`
 export const query = graphql`
   query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
