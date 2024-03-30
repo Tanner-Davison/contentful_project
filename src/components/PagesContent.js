@@ -5,13 +5,8 @@ import media from "styles/media"
 import ContentWidth from "./ContentWidth"
 import { componentToRender } from "../utils/componentToRender"
 
-const PagesContent = ({ section }) => {
-
-  console.log({PageContent: section});
-  
+const PagesContent = ({ section }) => {  
   const content = componentToRender(section?.componentTitle, section)
-  console.log({ PageSection: section })
-
   return (
     <Section
       $spacing={section?.spacing}

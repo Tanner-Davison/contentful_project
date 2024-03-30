@@ -10,65 +10,62 @@ import text from "styles/text"
 import PagesContent from "../components/PagesContent"
 
 const PageComponents = ({ content }) => {
-  console.log(content)
-
   return (
     <div>
-      {content.fieldSection.map((section, index) => (
+      {content.map((section, index) => (
         <PagesContent key={index} section={section} />
       ))}
     </div>
-  )
-}
+  );
+};
 
 const ContentfulPost = ({ data }) => {
-  console.log({ initialData: data.contentfulPage.field_section[0].fieldSection[0].components[0] })
-  const components = data.contentfulPage.field_section[0].fieldSection[0].components[0];
+  console.log({initialData:data})
+  const { contentfulPage } = data;
+  const {field_section} = contentfulPage;
+  console.log(field_section[0].fieldSection);
+  
+  
+  const Headline = styled.h2`
+  ${text.h2}
+  text-align: center;
+  `
   return (
     <Layout>
       {data?.header && <Headline>{data.header}</Headline>}
-      <PageComponents content={components} />
+      <PageComponents content={field_section[0].fieldSection} />
     </Layout>
   )
 }
-const Headline = styled.h2`
-  ${text.h2}
-  text-align: center;
-`
+
 export const query = graphql`
   query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       header
-      field_section {
-        fieldSection {
-          ... on ContentfulContentAndImage {
-            components {
-              fieldSection {
-                ... on ContentfulContentAndImage {
-                  id
-                  spacing
-                  imageOrientation
-                  image {
-                    url
-                  }
-                  headerColor
-                  contentSide
-                  componentTitle
-                  bodyHeader
-                  body {
-                    raw
-                  }
-                }
-                ... on ContentfulSimpleCentered {
-                  componentTitle
-                  headline
-                  id
-                }
-              }
-            }
+    id
+    field_section {
+      fieldSection {
+        ... on ContentfulContentAndImage {
+          id
+          body {
+            raw
           }
+          bodyHeader
+          componentTitle
+          headerColor
+          image {
+            url
+          }
+          imageOrientation
+          spacing
+        }
+        ... on ContentfulSimpleCentered {
+          id
+          componentTitle
+          headline
         }
       }
+    }
     }
   }
 `
