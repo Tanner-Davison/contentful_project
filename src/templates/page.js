@@ -10,6 +10,8 @@ import text from "styles/text"
 import PagesContent from "../components/PagesContent"
 
 const PageComponents = ({ content }) => {
+  console.log(content);
+  
   return (
     <div>
       {content.map((section, index) => (
@@ -19,14 +21,17 @@ const PageComponents = ({ content }) => {
   );
 };
 
-const ContentfulPost = ({ data }) => {
+const ContentfulPost = ({ data }) => { 
   const { contentfulPage } = data;
+  console.log(contentfulPage);
+  
   const {field_section} = contentfulPage;
-  const {fieldSection} = field_section[0]
+  console.log(field_section);
+  
   return (
     <Layout>
       {data?.header && <Headline>{data.header}</Headline>}
-      <PageComponents content={fieldSection} />
+      <PageComponents content={field_section} />
     </Layout>
   )
 }
@@ -40,7 +45,6 @@ export const query = graphql`
       id
       header
       field_section {
-        fieldSection {
           ... on ContentfulContentAndImage {
             id
             body {
@@ -60,7 +64,6 @@ export const query = graphql`
             componentTitle
             headline
           }
-        }
       }
     }
   }`

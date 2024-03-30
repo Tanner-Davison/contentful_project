@@ -6,6 +6,8 @@ import ContentWidth from "./ContentWidth"
 import { componentToRender } from "../utils/componentToRender"
 
 const PagesContent = ({ section }) => {  
+  console.log(section);
+  console.log(section.componentTitle)
   const content = componentToRender(section?.componentTitle, section)
   return (
     <Section
