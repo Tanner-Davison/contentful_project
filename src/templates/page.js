@@ -37,32 +37,31 @@ text-align: center;
 export const query = graphql`
   query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
+      id
       header
-    id
-    field_section {
-      fieldSection {
-        ... on ContentfulContentAndImage {
-          id
-          body {
-            raw
+      field_section {
+        fieldSection {
+          ... on ContentfulContentAndImage {
+            id
+            body {
+              raw
+            }
+            bodyHeader
+            componentTitle
+            headerColor
+            image {
+              url
+            }
+            imageOrientation
+            spacing
           }
-          bodyHeader
-          componentTitle
-          headerColor
-          image {
-            url
+          ... on ContentfulSimpleCentered {
+            id
+            componentTitle
+            headline
           }
-          imageOrientation
-          spacing
-        }
-        ... on ContentfulSimpleCentered {
-          id
-          componentTitle
-          headline
         }
       }
     }
-    }
-  }
-`
+  }`
 export default ContentfulPost
