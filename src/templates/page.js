@@ -10,66 +10,65 @@ import text from "styles/text"
 import PagesContent from "../components/PagesContent"
 
 const PageComponents = ({ content }) => {
-  console.log(content);
-  
+  console.log(content)
+
   return (
     <div>
-      {content.map((section, index) => (
+      {content.fieldSection.map((section, index) => (
         <PagesContent key={index} section={section} />
       ))}
     </div>
-  );
-};
-
-const ContentfulPost = ({ data }) => {
-  console.log({initialData:data})
-  const { contentfulPage } = data;
-  const {field_section} = contentfulPage;
-  const Headline = styled.h2`
-  ${text.h2}
-  text-align: center;
-  `
-  return (
-    <>
-     {typeof window !== "undefined" &&
-    <Layout>
-      {data?.header && <Headline>{data.header}</Headline>}
-      <PageComponents content={field_section[0]?.fieldSection} />
-    </Layout>
-  }
-    </>
   )
 }
 
+const ContentfulPost = ({ data }) => {
+  console.log({ initialData: data.contentfulPage.field_section[0].fieldSection[0].components[0] })
+  const components = data.contentfulPage.field_section[0].fieldSection[0].components[0];
+  return (
+    <Layout>
+      {data?.header && <Headline>{data.header}</Headline>}
+      <PageComponents content={components} />
+    </Layout>
+  )
+}
+const Headline = styled.h2`
+  ${text.h2}
+  text-align: center;
+`
 export const query = graphql`
   query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       header
-    slug
-    field_section {
-      fieldSection {
-        ... on ContentfulContentAndImage {
-          id
-          body {
-            raw
+      field_section {
+        fieldSection {
+          ... on ContentfulContentAndImage {
+            components {
+              fieldSection {
+                ... on ContentfulContentAndImage {
+                  id
+                  spacing
+                  imageOrientation
+                  image {
+                    url
+                  }
+                  headerColor
+                  contentSide
+                  componentTitle
+                  bodyHeader
+                  body {
+                    raw
+                  }
+                }
+                ... on ContentfulSimpleCentered {
+                  componentTitle
+                  headline
+                  id
+                }
+              }
+            }
           }
-          bodyHeader
-          componentTitle
-          headerColor
-          contentSide
-          imageOrientation
-          image {
-            url
-          }
-          spacing
-        }
-        ... on ContentfulSimpleCentered {
-          id
-          headline
-          componentTitle
         }
       }
-    }
     }
   }
 `

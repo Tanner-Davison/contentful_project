@@ -7,6 +7,7 @@ import { componentToRender } from "../utils/componentToRender"
 
 const PagesContent = ({ section }) => {
 
+  console.log({PageContent: section});
   
   const content = componentToRender(section?.componentTitle, section)
   console.log({ PageSection: section })
