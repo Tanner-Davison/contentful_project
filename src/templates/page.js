@@ -1,8 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styled from "styled-components"
 import media from "styles/media"
 import colors from "styles/colors"
@@ -10,12 +8,10 @@ import text from "styles/text"
 import PagesContent from "../components/PagesContent"
 
 const PageComponents = ({ content }) => {
-  console.log(content);
-  
   return (
     <div>
       {content.map((section, index) => (
-        <PagesContent key={index} section={section} />
+        <PagesContent key={index} section={section ? section : {}} />
       ))}
     </div>
   );
@@ -23,15 +19,14 @@ const PageComponents = ({ content }) => {
 
 const ContentfulPost = ({ data }) => { 
   const { contentfulPage } = data;
-  console.log(contentfulPage);
-  
   const {field_section} = contentfulPage;
-  console.log(field_section);
+  console.log(field_section?.__typename);
+  
   
   return (
     <Layout>
       {data?.header && <Headline>{data.header}</Headline>}
-      <PageComponents content={field_section} />
+      <PageComponents content={field_section? field_section : {}} />
     </Layout>
   )
 }
@@ -45,6 +40,7 @@ export const query = graphql`
       id
       header
       field_section {
+        __typename
           ... on ContentfulContentAndImage {
             id
             body {

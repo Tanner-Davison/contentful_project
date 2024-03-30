@@ -6,9 +6,9 @@ import ContentWidth from "./ContentWidth"
 import { componentToRender } from "../utils/componentToRender"
 
 const PagesContent = ({ section }) => {  
-  console.log(section);
-  console.log(section.componentTitle)
-  const content = componentToRender(section?.componentTitle, section)
+  console.log(section ? section: 'unknown');
+  console.log(section?.__typename)
+  const content = componentToRender(section?.__typename, section)
   return (
     <Section
       $spacing={section?.spacing}
