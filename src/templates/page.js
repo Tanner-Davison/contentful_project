@@ -19,14 +19,16 @@ const PageComponents = ({ content }) => {
 
 const ContentfulPost = ({ data }) => { 
   const { contentfulPage } = data;
-  const {field_section} = contentfulPage;
-  console.log(field_section?.__typename);
+  const {fieldSection} = contentfulPage;
+  console.log(data);
+  
+  console.log(fieldSection?.__typename);
   
   
   return (
     <Layout>
       {data?.header && <Headline>{data.header}</Headline>}
-      <PageComponents content={field_section? field_section : {}} />
+      <PageComponents content={fieldSection ? fieldSection : {}} />
     </Layout>
   )
 }
@@ -39,7 +41,7 @@ export const query = graphql`
     contentfulPage(slug: { eq: $slug }) {
       id
       header
-      field_section {
+      fieldSection {
         __typename
           ... on ContentfulContentAndImage {
             id
