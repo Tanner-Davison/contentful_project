@@ -1,12 +1,13 @@
 import React from "react"
 
 import styled from "styled-components"
+import colors from "styles/colors"
 import media from "styles/media"
-import ContentWidth from "./ContentWidth"
-import { componentToRender } from "../utils/componentToRender"
+import ContentWidth from "../components/ContentWidth"
+import { componentToRender } from "./componentToRender"
 
-const PagesContent = ({ section }) => {  
-  console.log(section ? section: 'unknown');
+const PagesContent = ({ section }) => {
+  console.log(section ? section : "unknown")
   console.log(section?.__typename)
   const content = componentToRender(section?.__typename, section)
   return (
@@ -37,9 +38,9 @@ const Section = styled.section`
   background: ${props =>
     props.$fwbackgroundimage
       ? `url(${props.$fwbackgroundimage})`
-      : props?.$backgroundcolor?.includes("gradient")
-      ? `${props.$backgroundcolor}`
-      : `#${props.$backgroundcolor}`};
+      : props?.$backgroundcolor?.includes("Gradient")
+      ? `${colors[props.$backgroundcolor]}`
+      : `${colors[props.$backgroundcolor]}`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;

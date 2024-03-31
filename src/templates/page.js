@@ -5,7 +5,7 @@ import styled from "styled-components"
 import media from "styles/media"
 import colors from "styles/colors"
 import text from "styles/text"
-import PagesContent from "../components/PagesContent"
+import PagesContent from "../utils/PagesContent"
 
 const PageComponents = ({ content }) => {
   return (
@@ -14,27 +14,24 @@ const PageComponents = ({ content }) => {
         <PagesContent key={index} section={section ? section : {}} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-const ContentfulPost = ({ data }) => { 
-  const { contentfulPage } = data;
-  const {fieldSection} = contentfulPage;
-  console.log(data);
-  
-  console.log(fieldSection?.__typename);
-  
-  
+const ContentfulPost = ({ data }) => {
+  const { contentfulPage } = data
+  const { fieldSection } = contentfulPage
+  console.log(data)
+
   return (
-    <Layout>
+    <Layout title={"home"}>
       {data?.header && <Headline>{data.header}</Headline>}
       <PageComponents content={fieldSection ? fieldSection : {}} />
     </Layout>
   )
 }
 const Headline = styled.h2`
-${text.h2}
-text-align: center;
+  ${text.h2}
+  text-align: center;
 `
 export const query = graphql`
   query ($slug: String!) {
@@ -43,26 +40,29 @@ export const query = graphql`
       header
       fieldSection {
         __typename
-          ... on ContentfulContentAndImage {
-            id
-            body {
-              raw
-            }
-            bodyHeader
-            componentTitle
-            headerColor
-            image {
-              url
-            }
-            imageOrientation
-            spacing
+        ... on ContentfulContentAndImage {
+          id
+          body {
+            raw
           }
-          ... on ContentfulSimpleCentered {
-            id
-            componentTitle
-            headline
+          bodyHeader
+          componentTitle
+          headerColor
+          image {
+            url
           }
+          imageOrientation
+          spacing
+          backgroundColor
+        }
+        ... on ContentfulSimpleCentered {
+          id
+          componentTitle
+          headline
+          spacing
+        }
       }
     }
-  }`
+  }
+`
 export default ContentfulPost

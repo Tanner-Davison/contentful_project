@@ -49,7 +49,7 @@ const colors = {
   greyGradient: 'linear-gradient(270deg, #000000 0%, rgba(0, 0, 0, 0.4) 100%);',
   lightPurpleGradient: 'linear-gradient(180deg, #F5F4F7 0%, #E8E0EB 100%);',
   darkPurpleGradient: 'linear-gradient(180deg, #583F99 0%, #3D2562 100%);',
-  mediumPurplGradient: 'linear-gradient(180deg, #7E5FDD 0%, #583F99 100%));'
+  mediumPurpleGradient: 'linear-gradient(180deg, #7E5FDD 0%, #583F99 100%);'
 }
 
 export default colors

@@ -85,6 +85,7 @@ module.exports = {
           'components': 'src/components',
           'styles': 'src/styles',
           'utils': 'src/utils',
+          'images': 'src/images'
           // add more aliases here as needed
         },
         extensions: ['js', 'jsx'],

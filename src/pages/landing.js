@@ -12,7 +12,7 @@ const BlogIndex = ({ data, location }) => {
   const title = contentfulPage?.title
 
   return (
-    <Layout>
+    <Layout title={"home"}>
       <ol style={{ listStyle: `none` }}>
         <li key={contentfulPage?.id}>
           <article
@@ -25,9 +25,7 @@ const BlogIndex = ({ data, location }) => {
                 <span itemProp="headline">{title}</span>
               </h2>
             </header>
-            <section>
-            
-            </section>
+            <section></section>
           </article>
         </li>
       </ol>

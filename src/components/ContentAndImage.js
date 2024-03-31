@@ -6,8 +6,8 @@ import colors from "styles/colors"
 import text from "styles/text"
 
 const ContentfulPost = ({ content }) => {
-  console.log(content);
-  
+  console.log(content)
+
   const siteTitle = content?.site?.siteMetadata?.title || `Title`
   console.log(content)
   const parsedBody =
@@ -77,11 +77,25 @@ const BodyWrapper = styled.div`
 const ImageAndContent = styled.div`
   position: relative;
   display: flex;
-  flex-direction: ${props=> props.$side ? 'row-reverse':'row'};
+  flex-direction: ${props => (props.$side ? "row-reverse" : "row")};
   align-items: center;
   justify-content: center;
-  gap: 5.083vw;
+  gap: 5.069vw;
   width: 80vw;
+  ${media.fullWidth} {
+    gap: 73px;
+    width: 1152px;
+  }
+
+  ${media.tablet} {
+    gap: 7.129vw;
+    width: 80vw;
+  }
+
+  ${media.mobile} {
+    width: 80vw;
+    flex-direction: column-reverse;
+  }
 `
 const Wrapper = styled.div`
   display: flex;
