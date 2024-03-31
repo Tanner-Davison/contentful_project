@@ -42,18 +42,22 @@ export const query = graphql`
         __typename
         ... on ContentfulContentAndImage {
           id
+          header
           body {
             raw
           }
           bodyHeader
+          bodyHeaderColor
           componentTitle
           headerColor
+          contentSide
           image {
             url
           }
           imageOrientation
           spacing
           backgroundColor
+          bodyTextColor
         }
         ... on ContentfulSimpleCentered {
           id
