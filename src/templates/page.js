@@ -20,7 +20,7 @@ const PageComponents = ({ content }) => {
 const ContentfulPost = ({ data }) => {
   const { contentfulPage } = data
   const { fieldSection } = contentfulPage
-  console.log(data)
+  
 
   return (
     <Layout title={"home"}>
