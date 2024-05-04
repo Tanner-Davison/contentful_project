@@ -32,7 +32,11 @@ const ContentfulPost = ({ content }) => {
 
   return (
     <Wrapper>
-      {text.header && <Header $color={text.headerColor} $orientation={image.orientation}>{text.header}</Header>}
+      {text.header && (
+        <Header $color={text.headerColor} $orientation={image.orientation}>
+          {text.header}
+        </Header>
+      )}
       <ImageAndContent $side={text.side} $orientation={image.orientation}>
         <BodyWrapper>
           {text.headline && (
@@ -57,55 +61,53 @@ export default ContentfulPost
 const Header = styled.h1`
   ${text.h1}
   text-align:'center';
-  align-self:${props=> props.$orientation ? 'start':'center'}; 
-  padding-left: ${props=> props.$orientation ? '3.611vw': 'unset'};
+  align-self: ${props => (props.$orientation ? "start" : "center")};
+  padding-left: ${props => (props.$orientation ? "3.611vw" : "unset")};
   color: ${props => (props.$color ? colors[props.$color] : "inherit")};
-  ${media.fullWidth}{
-    padding-left: ${props=> props.$orientation ? '52px': 'unset'};
+  ${media.fullWidth} {
+    padding-left: ${props => (props.$orientation ? "52px" : "unset")};
   }
-  ${media.tablet}{
-    padding-left: ${props=> props.$orientation ? '.55vw': 'unset'};
+  ${media.tablet} {
+    padding-left: ${props => (props.$orientation ? ".55vw" : "unset")};
   }
-  ${media.mobile}{
+  ${media.mobile} {
     padding-left: unset;
-    align-self:${props=> props.$orientation ? 'center':'center'};
+    align-self: ${props => (props.$orientation ? "center" : "center")};
     text-align: center;
   }
 `
 const HeroImage = styled.img`
-  max-height: ${props=> props.$orientation ? "55.611vw" : "auto"};
-  width:${props=> props.$orientation ? "27.778vw" : "40%"};
-  border-radius:15px;
+  max-height: ${props => (props.$orientation ? "55.611vw" : "auto")};
+  width: ${props => (props.$orientation ? "27.778vw" : "40%")};
+  border-radius: 15px;
 
   ${media.fullWidth} {
-    max-height: ${props=> props.$orientation ? "700px" : "auto"};
-    width:${props=> props.$orientation ? "400px" : "40%"};
+    max-height: ${props => (props.$orientation ? "700px" : "auto")};
+    width: ${props => (props.$orientation ? "400px" : "40%")};
   }
-  
+
   ${media.tablet} {
-    max-height: ${props=> props.$orientation ? "68.359vw" : "auto"};
-    width:${props=> props.$orientation ? "39.063vw" : "45%"};
+    max-height: ${props => (props.$orientation ? "68.359vw" : "auto")};
+    width: ${props => (props.$orientation ? "39.063vw" : "45%")};
   }
-  
+
   ${media.mobile} {
-    max-height: ${props=> props.$orientation ? "148vw" : "auto"};
-    width:${props=> props.$orientation ? "75vw" : "90%"};
+    max-height: ${props => (props.$orientation ? "148vw" : "auto")};
+    width: ${props => (props.$orientation ? "75vw" : "90%")};
   }
 `
 const BodyHeadline = styled.h3`
   ${text.h3}
   color: ${props => (props.$color ? colors[props.$color] : "inherit")};
-  
+
   ${media.fullWidth} {
-  
   }
-  
+
   ${media.tablet} {
-  
   }
-  
+
   ${media.mobile} {
-  text-align: center;
+    text-align: center;
   }
 `
 const Body = styled.div`
@@ -120,15 +122,14 @@ const Body = styled.div`
     font-size: larger;
   }
   ${media.fullWidth} {
-  
   }
-  
+
   ${media.tablet} {
     ${text.bodyM}
   }
-  
+
   ${media.mobile} {
-  ${text.bodyL}
+    ${text.bodyL}
   }
 `
 const BodyWrapper = styled.div`
@@ -138,7 +139,7 @@ const BodyWrapper = styled.div`
 const ImageAndContent = styled.div`
   position: relative;
   display: flex;
-  flex-direction: ${props => props.$side ? "row-reverse" : "row"};
+  flex-direction: ${props => (props.$side ? "row-reverse" : "row")};
   align-items: center;
   justify-content: center;
   gap: 5.069vw;
@@ -155,7 +156,7 @@ const ImageAndContent = styled.div`
 
   ${media.mobile} {
     width: 80vw;
-    gap:${props=> props.$orientation ? '5vw':'19.467vw'};
+    gap: ${props => (props.$orientation ? "5vw" : "19.467vw")};
     flex-direction: column-reverse;
   }
 `

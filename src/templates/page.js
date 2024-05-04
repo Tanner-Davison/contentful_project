@@ -68,8 +68,19 @@ export const query = graphql`
         ... on ContentfulPinnedScrollLayout {
           id
           leftHeaders
-          leftBody
           spacing
+          bodySectionOne {
+            raw
+          }
+          bodySectionTwo{
+            raw
+          }
+          bodySectionThree{
+            raw
+          }
+          bodySectionFour{
+            raw
+          }
           imagesArray {
             title
             file {
