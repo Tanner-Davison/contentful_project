@@ -23,8 +23,7 @@ const PinnedScrollLayout = ({ content }) => {
   let par2 = parsedText(content?.bodySectionTwo?.raw)
   let par3 = parsedText(content?.bodySectionThree?.raw)
   let par4 = parsedText(content?.bodySectionFour?.raw)
-
-  console.log(par4)
+  console.log(par2)
   let textParagraphs = [
     documentToReactComponents(par1),
     documentToReactComponents(par2),
@@ -45,27 +44,34 @@ const PinnedScrollLayout = ({ content }) => {
     })
 
     let mm = gsap.matchMedia()
-    mm.add("(min-width: 1024px)", () => {
+    mm.add("(min-width: 428px)", () => {
       const details = gsap.utils.toArray(
         ".desktopContentSection:not(:first-child)"
       )
+
       const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)")
-      gsap.set(photos, { yPercent: 101, borderRadius:'35px' })
+      gsap.set(photos, { yPercent: 101, borderRadius: "35px" })
 
       const allPhotos = gsap.utils.toArray(".desktopPhoto")
 
       details.forEach((detail, index) => {
         let headline = detail.querySelector("h2")
-
+        let Border = document.querySelector(".desktopPhotos")
+        let shaddow = [
+          " 0px 0px 20px 4px rgba(0, 255, 0, 0.4)",
+          "0px 0px 20px 4px rgba(255,153,77,0.63)",
+          "0px 0px 20px 4px rgba(255,215,123,0.63)",
+        ]
         let animation = gsap
           .timeline()
-          .to(photos[index], { yPercent: 0, scale:1.099 })
+          .to(photos[index], { yPercent: 0, scale: 1.099 })
+          .to(Border, { boxShadow: shaddow[index] },'>-=.3')
           .set(allPhotos[index], { autoAlpha: 0 })
 
         ScrollTrigger.create({
           trigger: headline,
           start: "top 70%",
-          end: "top 25%",
+          end: "top 0%",
           animation: animation,
           scrub: true,
           markers: false,
@@ -103,7 +109,6 @@ const PinnedScrollLayout = ({ content }) => {
           </DesktopPhotos>
         </Right>
       </Gallery>
-      <Spacer />
     </>
   )
 }
@@ -122,7 +127,6 @@ const Photos = styled.img`
   }
 
   ${media.tablet} {
-    position: relative;
   }
 
   ${media.mobile} {
@@ -133,12 +137,14 @@ const DesktopPhotos = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 45vw;
-  height: 40vw;
+  width: 100%;
+  height: 35vw;
+  -webkit-box-shadow: 0px 0px 10px 8px rgba(255, 255, 255, 0.63);
+  box-shadow: 0px 0px 10px 8px rgba(84, 84, 255, 0.63);
   border-radius: 1.389vw;
+
   position: relative;
   overflow: hidden;
-  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.2);
   ${media.fullWidth} {
     width: 648px;
     height: 504px;
@@ -146,8 +152,6 @@ const DesktopPhotos = styled.div`
   }
 
   ${media.tablet} {
-    height: 100%;
-    width: 100%;
   }
 
   ${media.mobile} {
@@ -159,8 +163,9 @@ const DesktopPhotos = styled.div`
 const Right = styled.div`
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 60%;
   height: 100vh;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -169,34 +174,33 @@ const Right = styled.div`
   }
 
   ${media.tablet} {
+    height: 45vh;
   }
 
   ${media.mobile} {
     width: 45%;
   }
 `
-const Text = styled.p`
+const Text = styled.div`
   ${text.bodyL}
   text-align: left;
   align-self: center;
   margin: unset;
   border-radius: 0.417vw;
   width: 95%;
-
+  b {
+    color: ${colors.darkOrange};
+  }
   ${media.fullWidth} {
     border-radius: 6px;
   }
-
-  ${media.tablet} {
-  }
-
   ${media.mobile} {
     ${text.m3}
   }
 `
 const Headline = styled.h2`
   ${text.h2}
-
+  align-self: flex-start;
   margin: unset;
   border-radius: 0.417vw;
   padding: 0.694vw;
@@ -214,8 +218,8 @@ const Headline = styled.h2`
 const Details = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   margin-bottom: 20.833vw;
   padding-top: 1.042vw;
@@ -228,7 +232,8 @@ const Details = styled.div`
   }
 
   ${media.tablet} {
-    margin-bottom: 29.297vw;
+    min-height: 45vh;
+    margin-bottom: 15.297vw;
   }
 
   ${media.mobile} {
@@ -240,7 +245,7 @@ const DetailsWrapper = styled.div`
     border-top: unset;
     justify-content: center;
   }
-  margin: auto;
+
   width: 80%;
   ${media.fullWidth} {
   }
@@ -255,7 +260,8 @@ const DetailsWrapper = styled.div`
 `
 
 const Left = styled.div`
-  width: 50%;
+  width: 60%;
+
   ${media.fullWidth} {
   }
 
@@ -269,9 +275,10 @@ const Left = styled.div`
 
 const Gallery = styled.div`
   display: flex;
-  flex-direction: row-reverse;
-  background-color: black;
-  border-radius: 6.944vw;
+  flex-direction: row;
+  background: black;
+  border-radius: 2.944vw;
+  padding: 0vw 3.472vw;
   color: white;
   ${media.fullWidth} {
     border-radius: 100px;
