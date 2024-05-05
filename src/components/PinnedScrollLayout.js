@@ -340,6 +340,9 @@ const Gallery = styled.div`
   }
 `
 const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 background-color: black;
 width: 100vw;
 `
