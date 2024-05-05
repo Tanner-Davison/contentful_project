@@ -1,10 +1,9 @@
 import React, { Suspense } from 'react';
+import PinnedScrollLayout from '../components/PinnedScrollLayout';
+import SimpleCentered from '../components/SimpleCentered';
+import ContentAndImage from '../components/ContentAndImage';
+import FwBgCenteredContent from '../components/FwBgCenteredContent';
 
-// Lazy load the components
-const ContentAndImage = React.lazy(() => import('../components/ContentAndImage'));
-const SimpleCentered = React.lazy(() => import('../components/SimpleCentered'));
-const PinnedScrollLayout = React.lazy(()=> import('../components/PinnedScrollLayout'))
-const FwBgCenteredContent = React.lazy(()=> import('../components/FwBgCenteredContent'))
 export const componentToRender = (component, content) => {
   console.log(component);
   switch (component) {

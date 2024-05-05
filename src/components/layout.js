@@ -64,7 +64,6 @@ const Nav = styled.header`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100vw;
   padding: 0.347vw;
   padding-left: 25px;
   a {

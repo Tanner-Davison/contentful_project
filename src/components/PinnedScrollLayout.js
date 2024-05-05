@@ -22,11 +22,11 @@ const PinnedScrollLayout = ({ content }) => {
   const textParagraphs = [par1, par2, par3, par4]
 
   useEffect(() => {
-    ScrollSmoother.create({
+    const smoother = ScrollSmoother.create({
       smooth: 1,
       effects: true,
       smoothTouch: 0.1,
-    })
+    });
     ScrollTrigger.create({
       trigger: ".gallery",
       start: "top top",
@@ -59,6 +59,10 @@ const PinnedScrollLayout = ({ content }) => {
         markers: false,
       })
     })
+    return () => {
+      smoother.kill();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, [])
 
   return (
