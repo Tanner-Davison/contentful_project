@@ -4,6 +4,7 @@ import React, { Suspense } from 'react';
 const ContentAndImage = React.lazy(() => import('../components/ContentAndImage'));
 const SimpleCentered = React.lazy(() => import('../components/SimpleCentered'));
 const PinnedScrollLayout = React.lazy(()=> import('../components/PinnedScrollLayout'))
+const FwBgCenteredContent = React.lazy(()=> import('../components/FwBgCenteredContent'))
 export const componentToRender = (component, content) => {
   console.log(component);
   switch (component) {
@@ -25,6 +26,12 @@ export const componentToRender = (component, content) => {
             <PinnedScrollLayout content={content} />
           </Suspense>
         );
+        case 'ContentfulFullWidthBackgroundImageCenteredContent':
+          return (
+            <Suspense fallback={<div>Loading SimpleCentered...</div>}>
+              <FwBgCenteredContent content={content} />
+            </Suspense>
+          );
     default:
       return '';
   }

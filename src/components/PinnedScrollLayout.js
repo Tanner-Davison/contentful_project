@@ -7,6 +7,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollSmoother } from "gsap/ScrollSmoother"
+import vaultguy1 from "../images/vaultguy1.webp"
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(ScrollSmoother)
 
@@ -50,28 +51,22 @@ const PinnedScrollLayout = ({ content }) => {
       )
 
       const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)")
-      gsap.set(photos, { yPercent: 101, borderRadius: "35px" })
+      gsap.set(photos, { yPercent: 101, borderRadius:'100%', })
 
       const allPhotos = gsap.utils.toArray(".desktopPhoto")
 
       details.forEach((detail, index) => {
         let headline = detail.querySelector("h2")
         let Border = document.querySelector(".desktopPhotos")
-        let shaddow = [
-          " 0px 0px 20px 4px rgba(0, 255, 0, 0.4)",
-          "0px 0px 20px 4px rgba(255,153,77,0.63)",
-          "0px 0px 20px 4px rgba(255,215,123,0.63)",
-        ]
         let animation = gsap
           .timeline()
-          .to(photos[index], { yPercent: 0, scale: 1.099 })
-          .to(Border, { boxShadow: shaddow[index] },'>-=.3')
+          .to(photos[index], { yPercent: 0, borderRadius: "10px" }, 0)
           .set(allPhotos[index], { autoAlpha: 0 })
 
         ScrollTrigger.create({
           trigger: headline,
-          start: "top 70%",
-          end: "top 0%",
+          start: "top 80%",
+          end: "top 10%",
           animation: animation,
           scrub: true,
           markers: false,
@@ -85,14 +80,23 @@ const PinnedScrollLayout = ({ content }) => {
       <Gallery className="gallery">
         <Left>
           <DetailsWrapper className="desktopContent">
-            {content?.leftHeaders.map((headline, index) => (
-              <Details key={index} className="desktopContentSection">
-                <Headline className="headline">{headline}</Headline>
-                <Text key={index} className="text">
-                  {textParagraphs[index]}
-                </Text>
-              </Details>
-            ))}
+            {content?.leftHeaders.map((headline, index) => {
+              console.log(index);
+              
+              return (
+                <Details key={index} className="desktopContentSection">
+                  <Headline className="headline">{headline}</Headline>
+                  <Text key={index} className="text">
+                    {textParagraphs[index]}
+                  </Text>
+
+                  <TextImage
+                    src={content?.textBodyImages[index]?.file?.url}
+                    alt={content?.textBodyImages[index]?.title}
+                  />
+                </Details>
+              )
+            })}
           </DetailsWrapper>
         </Left>
         <Right className="right">
@@ -123,6 +127,7 @@ const Photos = styled.img`
   position: absolute;
   width: 100%;
   height: 100%;
+  border: 3px transparent silver;
   ${media.fullWidth} {
   }
 
@@ -137,11 +142,9 @@ const DesktopPhotos = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 35vw;
-  -webkit-box-shadow: 0px 0px 10px 8px rgba(255, 255, 255, 0.63);
-  box-shadow: 0px 0px 10px 8px rgba(84, 84, 255, 0.63);
-  border-radius: 1.389vw;
+  width: 45vw;
+  height: 50vw;
+  border-radius: 10px;
 
   position: relative;
   overflow: hidden;
@@ -152,6 +155,8 @@ const DesktopPhotos = styled.div`
   }
 
   ${media.tablet} {
+    width: 100%;
+    height: 65vw;
   }
 
   ${media.mobile} {
@@ -174,17 +179,36 @@ const Right = styled.div`
   }
 
   ${media.tablet} {
-    height: 45vh;
+    height: 80vh;
   }
 
   ${media.mobile} {
     width: 45%;
   }
 `
+const TextImage = styled.img`
+  max-height: 20.833vw;
+  margin: 6.944vw 0vw;
+  border-radius: 3.472vw;
+  ${media.fullWidth} {
+    margin: 100px 0px;
+  }
+  
+  ${media.tablet} {
+  
+  width: 98%;
+  margin:4.883vw 0vw;
+  border-radius: 4.883vw;
+  }
+  
+  ${media.mobile} {
+  
+  }
+`
 const Text = styled.div`
   ${text.bodyL}
   text-align: left;
-  align-self: center;
+  align-self: flex-start;
   margin: unset;
   border-radius: 0.417vw;
   width: 95%;
@@ -221,7 +245,6 @@ const Details = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin-bottom: 20.833vw;
   padding-top: 1.042vw;
   border-top: 0.347vw solid white;
 
@@ -244,6 +267,7 @@ const DetailsWrapper = styled.div`
   > :first-child {
     border-top: unset;
     justify-content: center;
+    margin-top:150px;
   }
 
   width: 80%;
@@ -252,6 +276,7 @@ const DetailsWrapper = styled.div`
 
   ${media.tablet} {
     width: 100%;
+    
   }
 
   ${media.mobile} {
@@ -260,12 +285,17 @@ const DetailsWrapper = styled.div`
 `
 
 const Left = styled.div`
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
   width: 60%;
 
   ${media.fullWidth} {
   }
 
   ${media.tablet} {
+    width: 45%;
+    margin-left:25px;
   }
 
   ${media.mobile} {
@@ -277,14 +307,15 @@ const Gallery = styled.div`
   display: flex;
   flex-direction: row;
   background: black;
-  border-radius: 2.944vw;
+
   padding: 0vw 3.472vw;
   color: white;
   ${media.fullWidth} {
-    border-radius: 100px;
+
   }
 
   ${media.tablet} {
+    gap:25px;
   }
 
   ${media.mobile} {

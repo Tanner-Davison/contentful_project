@@ -65,6 +65,18 @@ export const query = graphql`
           headline
           spacing
         }
+        ... on ContentfulFullWidthBackgroundImageCenteredContent {
+          eyebrow
+          header
+          body{
+            body
+          }
+          rowOrColumn
+          bgImage{
+            url
+          }
+          spacing
+        }
         ... on ContentfulPinnedScrollLayout {
           id
           leftHeaders
@@ -82,6 +94,12 @@ export const query = graphql`
             raw
           }
           imagesArray {
+            title
+            file {
+              url
+            }
+          }
+          textBodyImages{
             title
             file {
               url
