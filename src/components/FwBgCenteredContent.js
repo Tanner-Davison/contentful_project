@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import media from "styles/media"
-import colors from "styles/colors"
 import text from "styles/text"
 
 const FwBgCenteredContent = ({ content }) => {
@@ -24,7 +23,7 @@ const Body = styled.p`
   text-align: center;
   ${text.bodyM}
   color:white;
-  width:75%;
+  width: 75%;
   ${media.fullWidth} {
   }
 
@@ -34,7 +33,7 @@ const Body = styled.p`
   }
 
   ${media.mobile} {
-    width:80%;
+    width: 80%;
   }
 `
 const Header = styled.div`

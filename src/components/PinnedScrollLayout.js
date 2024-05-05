@@ -1,37 +1,26 @@
-import React, { useEffect } from "react"
-import styled from "styled-components"
-import media from "styles/media"
-import colors from "styles/colors"
-import text from "styles/text"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollSmoother } from "gsap/ScrollSmoother"
-import vaultguy1 from "../images/vaultguy1.webp"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import React, { useEffect } from "react"
+import styled from "styled-components"
+import colors from "styles/colors"
+import media from "styles/media"
+import text from "styles/text"
 import CautionTape from "./ComponentBreakers/CautionTape"
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(ScrollSmoother)
 
 const PinnedScrollLayout = ({ content }) => {
-  console.log(content)
-  const parsedText = text => {
-    if (text) {
-      return JSON.parse(text, null, 2)
-    } else {
-      return null
-    }
-  }
-  let par1 = parsedText(content?.bodySectionOne?.raw)
-  let par2 = parsedText(content?.bodySectionTwo?.raw)
-  let par3 = parsedText(content?.bodySectionThree?.raw)
-  let par4 = parsedText(content?.bodySectionFour?.raw)
-  console.log(par2)
-  let textParagraphs = [
-    documentToReactComponents(par1),
-    documentToReactComponents(par2),
-    documentToReactComponents(par3),
-    documentToReactComponents(par4),
-  ]
+  const doc2Rec = documentToReactComponents
+  const parsedText = (text) => (text ? JSON.parse(text, null, 2) : null)
+  let par1 = doc2Rec(parsedText(content?.bodySectionOne?.raw))
+  let par2 = doc2Rec(parsedText(content?.bodySectionTwo?.raw))
+  let par3 = doc2Rec(parsedText(content?.bodySectionThree?.raw))
+  let par4 = doc2Rec(parsedText(content?.bodySectionFour?.raw))
+
+  const textParagraphs = [par1, par2, par3, par4]
+
   useEffect(() => {
     ScrollSmoother.create({
       smooth: 1,
@@ -48,7 +37,6 @@ const PinnedScrollLayout = ({ content }) => {
     const details = gsap.utils.toArray(
       ".desktopContentSection:not(:first-child)"
     )
-
     const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)")
     gsap.set(photos, { yPercent: 101, borderRadius: "100%" })
 
@@ -159,7 +147,7 @@ const DesktopPhotos = styled.div`
 
   ${media.mobile} {
     height: 85%;
-    width:100%;
+    width: 100%;
     align-self: flex-start;
   }
 `
@@ -193,8 +181,8 @@ const TextImage = styled.img`
 
   ${media.fullWidth} {
     max-height: 300px;
-  margin: 100px 0px;
-  border-radius: 50px;
+    margin: 100px 0px;
+    border-radius: 50px;
   }
 
   ${media.tablet} {
@@ -235,8 +223,8 @@ const Text = styled.div`
   ${media.mobile} {
     ${text.m3}
     ul {
-    padding-left:2.168vw;
-  }
+      padding-left: 2.168vw;
+    }
   }
 `
 const Headline = styled.h2`
@@ -283,8 +271,8 @@ const Details = styled.div`
 
   ${media.mobile} {
     min-height: 50vh;
-    margin-bottom:11.682vw;
-    padding-top:5.505vw;
+    margin-bottom: 11.682vw;
+    padding-top: 5.505vw;
   }
 `
 
