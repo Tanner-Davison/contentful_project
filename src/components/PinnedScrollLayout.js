@@ -62,7 +62,7 @@ const PinnedScrollLayout = ({ content }) => {
   }, [])
 
   return (
-    <>
+    <Wrapper>
       <CautionTape />
       <Gallery className="gallery">
         <Left>
@@ -100,7 +100,7 @@ const PinnedScrollLayout = ({ content }) => {
           </DesktopPhotos>
         </Right>
       </Gallery>
-    </>
+    </Wrapper>
   )
 }
 
@@ -251,12 +251,10 @@ const Details = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding-top: 1.042vw;
   border-top: 0.347vw solid white;
 
   ${media.fullWidth} {
-    margin-bottom: 300px;
     padding-top: 15px;
     border-top: 5px solid white;
   }
@@ -328,7 +326,7 @@ const Gallery = styled.div`
   color: white;
 
   ${media.fullWidth} {
-    padding: 0px 50px;
+    padding: 0px 100px;
     max-width: 1440px;
   }
 
@@ -340,4 +338,8 @@ const Gallery = styled.div`
     gap: unset;
     padding-top: 11.682vw;
   }
+`
+const Wrapper = styled.div`
+background-color: black;
+width: 100vw;
 `

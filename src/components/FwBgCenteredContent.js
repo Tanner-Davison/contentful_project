@@ -113,7 +113,7 @@ const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-position: center 25px;
   background-size: contain;
-  width: 100%;
+  width: 100vw;
   height: 93vh;
 
   &::before {
