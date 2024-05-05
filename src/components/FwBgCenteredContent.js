@@ -64,13 +64,11 @@ const ContentDiv = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(0.208vw);
   background-color: rgba(0, 0, 0, 0.4);
   width: 35%;
-  -webkit-box-shadow: inset 0.069vw -0.069vw 1.319vw 0.069vw #ffffff,
-    0.069vw -0.069vw 1.736vw 0.069vw #ffffff;
-  box-shadow: inset 0.069vw -0.069vw 1.319vw 0.069vw #ffffff,
-    0.069vw -0.069vw 1.736vw 0.069vw #123;
+  -webkit-box-shadow: inset 1px -1px 19px 1px #ffffff, 1px -1px 25px 1px #ffffff;
+  box-shadow: inset 1px -1px 19px 1px #ffffff, 1px -1px 25px 1px #123;
   border-radius: 1.736vw;
   padding: 1.042vw 1.736vw;
   ${media.fullWidth} {
@@ -86,11 +84,21 @@ const ContentDiv = styled.div`
     width: 50%;
     height: 40vh;
     border-radius: 3.418vw;
+    backdrop-filter: blur(0.391vw);
+    -webkit-box-shadow: inset 0.098vw -0.098vw 1.855vw 0.098vw #ffffff,
+      0.098vw -0.098vw 2.441vw 0.098vw #ffffff;
+    box-shadow: inset 0.098vw -0.098vw 1.855vw 0.098vw #ffffff,
+      0.098vw -0.098vw 2.441vw 0.098vw #123;
   }
 
   ${media.mobile} {
     width: 85%;
     border-radius: 8.178vw;
+    backdrop-filter: blur(4px);
+    -webkit-box-shadow: inset 0.234vw -0.234vw 4.439vw 0.234vw #ffffff,
+      0.234vw -0.234vw 5.841vw 0.234vw #ffffff;
+    box-shadow: inset 0.234vw -0.234vw 4.439vw 0.234vw #ffffff,
+      0.234vw -0.234vw 5.841vw 0.234vw #123;
   }
 `
 const Wrapper = styled.div`

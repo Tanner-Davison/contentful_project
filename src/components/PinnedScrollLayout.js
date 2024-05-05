@@ -228,6 +228,7 @@ const Text = styled.div`
   }
   ${media.tablet} {
     width: 90;
+    ${text.m}
   }
   ${media.mobile} {
     ${text.m3}
