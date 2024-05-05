@@ -24,14 +24,17 @@ const Body = styled.p`
   text-align: center;
   ${text.bodyM}
   color:white;
+  width:75%;
   ${media.fullWidth} {
   }
 
   ${media.tablet} {
     ${text.bodyL}
+    width:70%;
   }
 
   ${media.mobile} {
+    width:80%;
   }
 `
 const Header = styled.div`

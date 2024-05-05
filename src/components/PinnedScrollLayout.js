@@ -148,7 +148,7 @@ const DesktopPhotos = styled.div`
   overflow: hidden;
   ${media.fullWidth} {
     width: 648px;
-    height: 504px;
+    height: 720px;
     border-radius: 20px;
   }
 
@@ -192,7 +192,9 @@ const TextImage = styled.img`
   border-radius: 3.472vw;
 
   ${media.fullWidth} {
-    margin: 100px 0px;
+    max-height: 300px;
+  margin: 100px 0px;
+  border-radius: 50px;
   }
 
   ${media.tablet} {
@@ -339,6 +341,7 @@ const Gallery = styled.div`
 
   ${media.fullWidth} {
     padding: 0px 50px;
+    max-width: 1440px;
   }
 
   ${media.tablet} {
