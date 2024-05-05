@@ -23,10 +23,12 @@ const ContentfulPost = ({ data }) => {
   console.log(data)
 
   return (
+
     <Layout title={"home"}>
       {data?.header && <Headline>{data.header}</Headline>}
       <PageComponents content={fieldSection ? fieldSection : {}} />
     </Layout>
+
   )
 }
 const Headline = styled.h2`

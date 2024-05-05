@@ -3,6 +3,27 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 import media from '../../styles/media';
 
+const CautionTapeComponent = () => {
+
+  useEffect(() => {
+    const tape = document.querySelectorAll('.tapeRef');
+    const tl = gsap.timeline({ repeat: -1 })
+    .to(tape, { duration:25, x: '100%', ease:'linear'})
+    
+
+  }, []);
+
+  return (
+    <CautionTapeWrapper>
+      <CautionTape className={'tapeRef'} >
+      <CautionTapeTwo className={'tapeRef2'} />
+      </CautionTape>
+    </CautionTapeWrapper>
+  );
+};
+
+export default CautionTapeComponent;
+
 const CautionTapeWrapper = styled.div`
 display: flex;
   position: relative;
@@ -14,17 +35,17 @@ display: flex;
   }
   
   ${media.tablet} {
-  height:1.953vw;
+  height:2.953vw;
   }
   
   ${media.mobile} {
-  height:2.336vw;
+  height:3.336vw;
   }
 `;
 
 const CautionTape = styled.div`
 position: relative;
-  width: 200%; /* Double the width for infinite loop */
+  width: 200%; 
   height: 100%;
 background: linear-gradient(45deg, 
   black 5%, /* One black stripe */
@@ -113,24 +134,3 @@ background: linear-gradient(45deg,
   yellow 95% /* Nineteen yellow stripes */
 );
 `;
-
-const CautionTapeComponent = () => {
-
-  useEffect(() => {
-    const tape = document.querySelectorAll('.tapeRef');
-    const tl = gsap.timeline({ repeat: -1 })
-    .to(tape, { duration:25, x: '100%', ease:'linear'})
-    
-
-  }, []);
-
-  return (
-    <CautionTapeWrapper>
-      <CautionTape className={'tapeRef'} >
-      <CautionTapeTwo className={'tapeRef2'} />
-      </CautionTape>
-    </CautionTapeWrapper>
-  );
-};
-
-export default CautionTapeComponent;

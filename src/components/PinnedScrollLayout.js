@@ -8,7 +8,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollSmoother } from "gsap/ScrollSmoother"
 import vaultguy1 from "../images/vaultguy1.webp"
-import CautionTape from "./In Between Components/CautionTape"
+import CautionTape from "./ComponentBreakers/CautionTape"
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(ScrollSmoother)
 
@@ -158,7 +158,7 @@ const DesktopPhotos = styled.div`
   }
 
   ${media.mobile} {
-    height: 90%;
+    height: 85%;
     width:100%;
     align-self: flex-start;
   }
