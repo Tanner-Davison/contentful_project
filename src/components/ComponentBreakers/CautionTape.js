@@ -29,7 +29,7 @@ display: flex;
   position: relative;
   height: 1.389vw; /* Adjust the height of the caution tape */
   overflow: hidden;
-  width:100vw;
+  width:100%;
   ${media.fullWidth} {
   height:20px;
   }

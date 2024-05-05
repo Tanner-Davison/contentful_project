@@ -336,7 +336,7 @@ const Gallery = styled.div`
   flex-direction: row;
   background: black;
   justify-content: space-around;
-  padding: 0vw 3.472vw;
+  padding: 0vw 5.472vw;
   color: white;
 
   ${media.fullWidth} {
