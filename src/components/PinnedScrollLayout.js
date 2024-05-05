@@ -8,6 +8,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ScrollSmoother } from "gsap/ScrollSmoother"
 import vaultguy1 from "../images/vaultguy1.webp"
+import CautionTape from "./In Between Components/CautionTape"
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(ScrollSmoother)
 
@@ -44,45 +45,43 @@ const PinnedScrollLayout = ({ content }) => {
       pin: ".right",
     })
 
-    let mm = gsap.matchMedia()
-    mm.add("(min-width: 428px)", () => {
-      const details = gsap.utils.toArray(
-        ".desktopContentSection:not(:first-child)"
-      )
+    const details = gsap.utils.toArray(
+      ".desktopContentSection:not(:first-child)"
+    )
 
-      const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)")
-      gsap.set(photos, { yPercent: 101, borderRadius:'100%', })
+    const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)")
+    gsap.set(photos, { yPercent: 101, borderRadius: "100%" })
 
-      const allPhotos = gsap.utils.toArray(".desktopPhoto")
+    const allPhotos = gsap.utils.toArray(".desktopPhoto")
 
-      details.forEach((detail, index) => {
-        let headline = detail.querySelector("h2")
-        let Border = document.querySelector(".desktopPhotos")
-        let animation = gsap
-          .timeline()
-          .to(photos[index], { yPercent: 0, borderRadius: "10px" }, 0)
-          .set(allPhotos[index], { autoAlpha: 0 })
+    details.forEach((detail, index) => {
+      let headline = detail.querySelector("h2")
+      let Border = document.querySelector(".desktopPhotos")
+      let animation = gsap
+        .timeline()
+        .to(photos[index], { yPercent: 0, borderRadius: "10px" }, 0)
+        .set(allPhotos[index], { autoAlpha: 0 })
 
-        ScrollTrigger.create({
-          trigger: headline,
-          start: "top 80%",
-          end: "top 10%",
-          animation: animation,
-          scrub: true,
-          markers: false,
-        })
+      ScrollTrigger.create({
+        trigger: headline,
+        start: "top 80%",
+        end: "top 10%",
+        animation: animation,
+        scrub: true,
+        markers: false,
       })
     })
   }, [])
 
   return (
     <>
+      <CautionTape />
       <Gallery className="gallery">
         <Left>
           <DetailsWrapper className="desktopContent">
             {content?.leftHeaders.map((headline, index) => {
-              console.log(index);
-              
+              console.log(index)
+
               return (
                 <Details key={index} className="desktopContentSection">
                   <Headline className="headline">{headline}</Headline>
@@ -135,7 +134,6 @@ const Photos = styled.img`
   }
 
   ${media.mobile} {
-    position: relative;
   }
 `
 const DesktopPhotos = styled.div`
@@ -156,12 +154,13 @@ const DesktopPhotos = styled.div`
 
   ${media.tablet} {
     width: 100%;
-    height: 65vw;
+    height: 73vw;
   }
 
   ${media.mobile} {
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width:100%;
+    align-self: flex-start;
   }
 `
 
@@ -183,26 +182,31 @@ const Right = styled.div`
   }
 
   ${media.mobile} {
-    width: 45%;
+    width: 50%;
+    height: 45vh;
   }
 `
 const TextImage = styled.img`
   max-height: 20.833vw;
   margin: 6.944vw 0vw;
   border-radius: 3.472vw;
+
   ${media.fullWidth} {
     margin: 100px 0px;
   }
-  
+
   ${media.tablet} {
-  
-  width: 98%;
-  margin:4.883vw 0vw;
-  border-radius: 4.883vw;
+    width: 98%;
+    margin: 4.883vw 0vw;
+    border-radius: 4.883vw;
   }
-  
+
   ${media.mobile} {
-  
+    width: 85%;
+    max-height: 40vw;
+    margin: 11.682vw 0vw;
+    border-radius: 5.841vw;
+    align-self: flex-start;
   }
 `
 const Text = styled.div`
@@ -215,11 +219,21 @@ const Text = styled.div`
   b {
     color: ${colors.darkOrange};
   }
+  ul {
+    list-style-position: outside;
+    list-style-type: circle;
+  }
   ${media.fullWidth} {
     border-radius: 6px;
   }
+  ${media.tablet} {
+    width: 90;
+  }
   ${media.mobile} {
     ${text.m3}
+    ul {
+    padding-left:2.168vw;
+  }
   }
 `
 const Headline = styled.h2`
@@ -234,12 +248,14 @@ const Headline = styled.h2`
   }
 
   ${media.tablet} {
+    padding: 10px;
   }
 
   ${media.mobile} {
   }
 `
 const Details = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -257,9 +273,15 @@ const Details = styled.div`
   ${media.tablet} {
     min-height: 45vh;
     margin-bottom: 15.297vw;
+    :first-child {
+      margin-top: 5.93vw;
+    }
   }
 
   ${media.mobile} {
+    min-height: 50vh;
+    margin-bottom:11.682vw;
+    padding-top:5.505vw;
   }
 `
 
@@ -267,7 +289,7 @@ const DetailsWrapper = styled.div`
   > :first-child {
     border-top: unset;
     justify-content: center;
-    margin-top:150px;
+    margin-top: 150px;
   }
 
   width: 80%;
@@ -276,18 +298,21 @@ const DetailsWrapper = styled.div`
 
   ${media.tablet} {
     width: 100%;
-    
   }
 
   ${media.mobile} {
     width: 100%;
+    > :first-child {
+      margin-top: unset;
+      justify-content: flex-start;
+    }
   }
 `
 
 const Left = styled.div`
-display: flex;
-align-items: flex-start;
-justify-content: flex-start;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 60%;
 
   ${media.fullWidth} {
@@ -295,11 +320,11 @@ justify-content: flex-start;
 
   ${media.tablet} {
     width: 45%;
-    margin-left:25px;
+    margin-left: 25px;
   }
 
   ${media.mobile} {
-    width: 65%;
+    width: 60%;
   }
 `
 
@@ -307,17 +332,20 @@ const Gallery = styled.div`
   display: flex;
   flex-direction: row;
   background: black;
-
+  justify-content: space-around;
   padding: 0vw 3.472vw;
   color: white;
-  ${media.fullWidth} {
 
+  ${media.fullWidth} {
+    padding: 0px 50px;
   }
 
   ${media.tablet} {
-    gap:25px;
+    gap: 2.441vw;
   }
 
   ${media.mobile} {
+    gap: unset;
+    padding-top: 11.682vw;
   }
 `
