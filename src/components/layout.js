@@ -6,6 +6,7 @@ import colors from "styles/colors"
 import text from "styles/text"
 import homeFilled from "../images/homeFilled.png"
 import homeOutline from "../images/homeOutline.png"
+import ScrollSmoother from "gsap/ScrollSmoother"
 
 const Layout = ({ location = null, title, children }) => {
   const [homeIcon, setHomeIcon] = useState(homeOutline)

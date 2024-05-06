@@ -8,12 +8,13 @@ import colors from "styles/colors"
 import media from "styles/media"
 import text from "styles/text"
 import CautionTape from "./ComponentBreakers/CautionTape"
+
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(ScrollSmoother)
 
 const PinnedScrollLayout = ({ content }) => {
   const doc2Rec = documentToReactComponents
-  const parsedText = (text) => (text ? JSON.parse(text, null, 2) : null)
+  const parsedText = text => (text ? JSON.parse(text, null, 2) : null)
   let par1 = doc2Rec(parsedText(content?.bodySectionOne?.raw))
   let par2 = doc2Rec(parsedText(content?.bodySectionTwo?.raw))
   let par3 = doc2Rec(parsedText(content?.bodySectionThree?.raw))
@@ -22,11 +23,12 @@ const PinnedScrollLayout = ({ content }) => {
   const textParagraphs = [par1, par2, par3, par4]
 
   useEffect(() => {
-    const smoother = ScrollSmoother.create({
-      smooth: 1,
-      effects: true,
-      smoothTouch: 0.1,
-    });
+    // let smooth = ScrollSmoother.create({
+    //   smooth: 1,
+    //   effects: true,
+    //   smoothTouch: 0.1,
+    // })
+
     ScrollTrigger.create({
       trigger: ".gallery",
       start: "top top",
@@ -60,20 +62,18 @@ const PinnedScrollLayout = ({ content }) => {
       })
     })
     return () => {
-      smoother.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+      // smooth.kill()
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
   }, [])
 
   return (
-    <Wrapper>
+    <Wrapper >
       <CautionTape />
       <Gallery className="gallery">
-        <Left>
+        <Left id='target' className='target'>
           <DetailsWrapper className="desktopContent">
             {content?.leftHeaders.map((headline, index) => {
-              console.log(index)
-
               return (
                 <Details key={index} className="desktopContentSection">
                   <Headline className="headline">{headline}</Headline>
@@ -93,13 +93,12 @@ const PinnedScrollLayout = ({ content }) => {
         <Right className="right">
           <DesktopPhotos className="desktopPhotos">
             {content?.imagesArray.map((img, index) => (
-              <>
-                <Photos
-                  className={"desktopPhoto"}
-                  src={img?.file?.url}
-                  alt={img?.title}
-                />
-              </>
+              <Photos
+                key={index}
+                className={"desktopPhoto"}
+                src={img?.file?.url}
+                alt={img?.title}
+              />
             ))}
           </DesktopPhotos>
         </Right>
@@ -344,9 +343,9 @@ const Gallery = styled.div`
   }
 `
 const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-background-color: black;
-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  width: 100vw;
 `

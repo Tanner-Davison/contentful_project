@@ -2,9 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import media from "styles/media"
 import text from "styles/text"
-
+import scrollTo from 'gatsby-plugin-smoothscroll';
 const FwBgCenteredContent = ({ content }) => {
   console.log(content)
+  let block = 'start'
   return (
     <Wrapper $bgimg={content?.bgImage?.url}>
       <ContentDiv $orientation={content?.rowOrColumn}>
@@ -12,6 +13,7 @@ const FwBgCenteredContent = ({ content }) => {
           <Eyebrow>{content?.eyebrow}</Eyebrow>
           {content?.header}
         </Header>
+        <button onClick={() => scrollTo("#target")}>Scroll to Start</button>
         <Body>{content?.body?.body}</Body>
       </ContentDiv>
     </Wrapper>
