@@ -23,11 +23,6 @@ const PinnedScrollLayout = ({ content }) => {
   const textParagraphs = [par1, par2, par3, par4]
 
   useEffect(() => {
-    // let smooth = ScrollSmoother.create({
-    //   smooth: 1,
-    //   effects: true,
-    //   smoothTouch: 0.1,
-    // })
 
     ScrollTrigger.create({
       trigger: ".gallery",
@@ -62,15 +57,15 @@ const PinnedScrollLayout = ({ content }) => {
       })
     })
     return () => {
-      // smooth.kill()
+     
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, [])
 
   return (
-    <Wrapper >
+    <Wrapper>
       <CautionTape />
-      <Gallery className="gallery">
+      <Gallery  className="gallery">
         <Left id='target' className='target'>
           <DetailsWrapper className="desktopContent">
             {content?.leftHeaders.map((headline, index) => {

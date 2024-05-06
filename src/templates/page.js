@@ -11,7 +11,7 @@ const PageComponents = ({ content }) => {
   return (
     <div>
       {content.map((section, index) => (
-        <PagesContent key={index} section={section ? section : {}} />
+        <PagesContent id='smooth-content' key={index} section={section ? section : {}} />
       ))}
     </div>
   )
@@ -21,10 +21,19 @@ const ContentfulPost = ({ data }) => {
   const { contentfulPage } = data
   const { fieldSection } = contentfulPage
   console.log(data)
-
+// useEffect(()=>{
+//   let smoother = ScrollSmoother.create({
+//     wrapper: '#smooth-wrapper',
+//     content: '#smooth-content',
+//     smooth: 1,
+//     effects: true,
+//     smoothTouch: 0.1,
+//   })
+//   return()=> smoother.kill()
+// },[])
   return (
 
-    <Layout title={"home"}>
+    <Layout id='smooth-wrapper' title={"home"}>
       {data?.header && <Headline>{data.header}</Headline>}
       <PageComponents content={fieldSection ? fieldSection : {}} />
     </Layout>
