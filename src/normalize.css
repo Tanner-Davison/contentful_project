@@ -10,9 +10,9 @@
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
   scroll-padding: 
-  var(--scroll-padding, 10vh)
+  var(--scroll-padding, 5vh)
 }
 
 /* Sections
@@ -24,6 +24,8 @@ html {
 
 body {
   margin: 0;
+  scroll-behavior: smooth;
+  overflow-x:hidden;
 }
 
 /**

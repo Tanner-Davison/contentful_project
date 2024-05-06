@@ -112,25 +112,25 @@ const Photos = styled.img`
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 3px transparent silver;
   ${media.fullWidth} {
   }
 
   ${media.tablet} {
+    width: 90%;
+  height: 100%;
   }
+
 
   ${media.mobile} {
   }
 `
 const DesktopPhotos = styled.div`
-  position: relative;
+position: relative;
   display: flex;
   flex-direction: column;
-  width: 45vw;
+  width: 90%;
   height: 50vw;
-  border-radius: 10px;
-
-  position: relative;
+  border-radius: 0.694vw;
   overflow: hidden;
   ${media.fullWidth} {
     width: 648px;
@@ -139,7 +139,7 @@ const DesktopPhotos = styled.div`
   }
 
   ${media.tablet} {
-    width: 100%;
+    width: 90%;
     height: 73vw;
   }
 
@@ -151,9 +151,10 @@ const DesktopPhotos = styled.div`
 `
 
 const Right = styled.div`
+position: relative;
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 40%;
   height: 100vh;
   border-radius: 25px;
   display: flex;
@@ -164,11 +165,12 @@ const Right = styled.div`
   }
 
   ${media.tablet} {
-    height: 80vh;
+    height: 100vh;
+    width:50%;
   }
 
   ${media.mobile} {
-    width: 50%;
+    width: 40%;
     height: 45vh;
   }
 `
@@ -184,9 +186,10 @@ const TextImage = styled.img`
   }
 
   ${media.tablet} {
-    width: 98%;
+    width: 75%;
     margin: 4.883vw 0vw;
     border-radius: 4.883vw;
+    align-self: flex-start;
   }
 
   ${media.mobile} {
@@ -199,11 +202,11 @@ const TextImage = styled.img`
 `
 const Text = styled.div`
   ${text.bodyL}
-  text-align: left;
+  text-align: flex-start;
   align-self: flex-start;
   margin: unset;
   border-radius: 0.417vw;
-  width: 95%;
+  
   b {
     color: ${colors.darkOrange};
   }
@@ -215,11 +218,11 @@ const Text = styled.div`
     border-radius: 6px;
   }
   ${media.tablet} {
-    width: 90;
+    
     ${text.m}
   }
   ${media.mobile} {
-    ${text.m3}
+    ${text.m2}
     ul {
       padding-left: 2.168vw;
     }
@@ -230,17 +233,18 @@ const Headline = styled.h2`
   align-self: flex-start;
   margin: unset;
   border-radius: 0.417vw;
-  padding: 0.694vw;
+ 
   ${media.fullWidth} {
     border-radius: 6px;
     padding: 10px;
   }
 
   ${media.tablet} {
-    padding: 10px;
+    ${text.h2}
   }
 
   ${media.mobile} {
+    ${text.h3}
   }
 `
 const Details = styled.div`
@@ -273,22 +277,25 @@ const Details = styled.div`
 `
 
 const DetailsWrapper = styled.div`
+position: relative;
+display: flex;
+flex-direction: column;
   > :first-child {
     border-top: unset;
     justify-content: center;
-    margin-top: 150px;
+    margin-top: 10.417vw;
   }
 
-  width: 80%;
+  width: 70%;
   ${media.fullWidth} {
   }
 
   ${media.tablet} {
-    width: 100%;
+    width:75%;
   }
 
   ${media.mobile} {
-    width: 100%;
+    width: 85%;
     > :first-child {
       margin-top: unset;
       justify-content: flex-start;
@@ -297,17 +304,19 @@ const DetailsWrapper = styled.div`
 `
 
 const Left = styled.div`
+position: relative;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
-  width: 60%;
+  justify-content: center;
+  width: 50%;
 
   ${media.fullWidth} {
+    width:50%;
   }
 
   ${media.tablet} {
-    width: 45%;
-    margin-left: 25px;
+    width: 50%;
+   
   }
 
   ${media.mobile} {
@@ -320,21 +329,25 @@ const Gallery = styled.div`
   flex-direction: row;
   background: black;
   justify-content: space-around;
-  padding: 0vw 5.472vw;
+ 
+  width: 100vw;
   color: white;
 
   ${media.fullWidth} {
-    padding: 0px 100px;
-    max-width: 1440px;
+    
+    width: 1440px;
   }
 
   ${media.tablet} {
-    gap: 2.441vw;
+    width:100vw;
+    
   }
 
   ${media.mobile} {
     gap: unset;
+    width:100vw;
     padding-top: 11.682vw;
+    
   }
 `
 const Wrapper = styled.div`
