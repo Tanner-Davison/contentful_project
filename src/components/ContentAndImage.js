@@ -6,10 +6,7 @@ import colors from "styles/colors"
 import text from "styles/text"
 
 const ContentfulPost = ({ content }) => {
-  console.log(content)
-
   const siteTitle = content?.site?.siteMetadata?.title || `Title`
-  console.log(content)
   const parsedBody =
     content?.body?.raw && JSON.parse(content?.body?.raw, null, 2)
 
@@ -32,20 +29,21 @@ const ContentfulPost = ({ content }) => {
 
   return (
     <Wrapper>
+      <ImageAndContent $side={text.side} $orientation={image?.orientation}>
+      <AllTextWrapper>
       {text.header && (
-        <Header $color={text.headerColor} $orientation={image.orientation}>
+        <Eyebrow $color={text.headerColor} $orientation={image?.orientation}>
           {text.header}
-        </Header>
+        </Eyebrow>
       )}
-      <ImageAndContent $side={text.side} $orientation={image.orientation}>
-        <BodyWrapper>
           {text.headline && (
             <BodyHeadline $color={text.bodyHeaderColor}>
               {text.headline}
             </BodyHeadline>
           )}
           {text.body && <Body $color={text.textColor}>{text.body}</Body>}
-        </BodyWrapper>
+      
+        </AllTextWrapper>
         {image.url && (
           <HeroImage
             src={image.url}
@@ -58,21 +56,21 @@ const ContentfulPost = ({ content }) => {
   )
 }
 export default ContentfulPost
-const Header = styled.h1`
-  ${text.h1}
-  text-align:'center';
-  align-self: ${props => (props.$orientation ? "start" : "center")};
-  padding-left: ${props => (props.$orientation ? "3.611vw" : "unset")};
+const Eyebrow = styled.p`
+  ${text.eyebrow}
+  margin:unset;
+  align-self: flex-start;
+  /* padding-left: ${props => (props.$orientation ? "3.611vw" : "unset")}; */
   color: ${props => (props.$color ? colors[props.$color] : "inherit")};
   ${media.fullWidth} {
-    padding-left: ${props => (props.$orientation ? "52px" : "unset")};
+    /* padding-left: ${props => (props.$orientation ? "52px" : "unset")}; */
   }
   ${media.tablet} {
-    padding-left: ${props => (props.$orientation ? ".55vw" : "unset")};
+    /* padding-left: ${props => (props.$orientation ? ".55vw" : "unset")}; */
   }
   ${media.mobile} {
     padding-left: unset;
-    align-self: ${props => (props.$orientation ? "center" : "center")};
+    /* align-self: ${props => (props.$orientation ? "center" : "center")}; */
     text-align: center;
   }
 `
@@ -96,10 +94,11 @@ const HeroImage = styled.img`
     width: ${props => (props.$orientation ? "75vw" : "90%")};
   }
 `
-const BodyHeadline = styled.h3`
-  ${text.h3}
+const BodyHeadline = styled.h1`
+  ${text.h1}
   color: ${props => (props.$color ? colors[props.$color] : "inherit")};
-
+  margin:unset;
+ 
   ${media.fullWidth} {
   }
 
@@ -107,13 +106,12 @@ const BodyHeadline = styled.h3`
   }
 
   ${media.mobile} {
-    text-align: center;
+    ${text.h1Mobile}
   }
 `
 const Body = styled.div`
-  display: flex;
-  flex-direction: column;
   ${text.bodyM};
+
   p {
     color: ${props => (props.$color ? colors[props.$color] : "inherit")};
   }
@@ -129,12 +127,25 @@ const Body = styled.div`
   }
 
   ${media.mobile} {
-    ${text.bodyL}
+    ${text.bodyM}
   }
 `
-const BodyWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+const AllTextWrapper = styled.div`
+display: flex;
+flex-direction: column;
+width:31.25vw;
+${media.fullWidth} {
+  width:450px;
+}
+
+${media.tablet} {
+
+}
+
+${media.mobile} {
+width:100%;
+align-items: flex-start;
+}
 `
 const ImageAndContent = styled.div`
   position: relative;
