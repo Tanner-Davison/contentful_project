@@ -53,14 +53,14 @@ export const query = graphql`
         __typename
         ... on ContentfulContentAndImage {
           id
-          header
+          eyebrow
           body {
             raw
           }
           bodyHeader
           bodyHeaderColor
           componentTitle
-          headerColor
+          eyebrowColor
           contentSide
           image {
             url

@@ -1,4 +1,4 @@
-import media from './media';
+import media from "./media"
 
 const text = {
   giant: `
@@ -526,7 +526,7 @@ ${media.mobile} {
       line-height: 5.607vw;
     }
     `,
-    bodyXSBold: `
+  bodyXSBold: `
     font-family: Archivo;
     font-style: normal;
     font-weight: 700;
@@ -576,36 +576,36 @@ ${media.mobile} {
         letter-spacing: 0.701vw;
       }
     `,
-  h1Mobile: `
-    font-family: 'Archivo';
+  h1MobileComfort: `
+  font-family: "Comfortaa", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 11.215vw;
     line-height: 13.084vw;
   `,
-  h2Mobile: `
-    font-family: 'Archivo';
+  h2MobileComfort: `
+  font-family: "Comfortaa", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 8.879vw;
     line-height: 9.813vw;
   `,
-  h3Mobile: `
-    font-family: 'Archivo';
+  h3MobileComfort: `
+  font-family: "Comfortaa", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 7.009vw;
     line-height: 8.411vw;
   `,
-  h4Mobile: `
-    font-family: 'Archivo';
+  h4MobileComfort: `
+  font-family: "Comfortaa", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 4.673vw;
     line-height: 5.607vw;
   `,
-  h5Mobile: `
-    font-family: 'Archivo';
+  h5MobileComfort: `
+  font-family: "Comfortaa", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 3.738vw;
@@ -637,5 +637,210 @@ ${media.mobile} {
   background-clip: text;
   -webkit-text-stroke-width: 0.07vw;
 `,
-};
-export default text;
+  h1Comfort: `
+  font-family: "Comfortaa", sans-serif;;
+  font-style: normal;
+  font-weight: 700;
+
+    ${media.fullWidth} {
+      font-size: 60px;
+      line-height: 64px;
+    }
+
+    ${media.desktop} {
+      font-size: 4.167vw;
+      line-height: 4.444vw;
+    }
+
+    ${media.tablet} {
+      font-size: 5.859vw;
+      line-height: 6.25vw;
+    }
+
+    ${media.mobile} {
+      font-size: 11.215vw;
+      line-height: 13.084vw;
+    }
+    `,
+  h2Comfort: `
+  font-family: "Comfortaa", sans-serif;;
+  font-style: normal;
+  font-weight: 700;
+
+    ${media.fullWidth} {
+      font-size: 48px;
+      line-height: 56px;
+    }
+    
+    ${media.desktop} {
+      font-size: 3.333vw;
+      line-height: 3.889vw;
+    }
+
+    ${media.tablet} {
+      font-size: 4.688vw;
+      line-height: 5.469vw;
+    }
+
+    ${media.mobile} {
+      font-size: 8.879vw;
+      line-height: 9.813vw;
+    }
+    `,
+  h3Comfort: `
+  font-family: "Comfortaa", sans-serif;;
+  font-style: normal;
+  font-weight: 700;
+
+    ${media.fullWidth} {
+      font-size: 34px;
+      line-height: 40px;
+    }
+    
+    ${media.desktop} {
+      font-size: 2.361vw;
+      line-height: 2.778vw;
+    }
+
+    ${media.tablet} {
+      font-size: 3.32vw;
+      line-height: 3.906vw;
+    }
+
+    ${media.mobile} {
+      font-size: 7.009vw;
+      line-height: 8.411vw;
+    }
+    `,
+  eyebrowComfort: `
+  font-family: "Comfortaa", sans-serif;;
+  font-style: normal;
+  text-transform: uppercase;
+  font-weight: 800;
+
+      ${media.fullWidth} {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 3px;
+      }
+
+      ${media.desktop} {
+        font-size: 0.972vw;
+        line-height: 1.25vw;
+        letter-spacing: 0.208vw;
+      }
+      
+      ${media.tablet} {
+        font-size: 1.367vw;
+        line-height: 1.758vw;
+        letter-spacing: 0.293vw;
+      }
+      
+      ${media.mobile} {
+        font-size: 3.271vw;
+        line-height: 4.206vw;
+        letter-spacing: 0.701vw;
+      }
+    `,
+  bodyMComfort: `
+  font-family: "Comfortaa", sans-serif;;
+  font-style: normal;
+  font-weight: 400;
+
+    ${media.fullWidth} {
+      font-size: 18px;
+      line-height: 27px;
+    }
+    
+    ${media.desktop} {
+      font-size: 1.25vw;
+      line-height: 1.875vw;
+    }
+
+    ${media.tablet} {
+      font-size: 1.758vw;
+      line-height: 2.637vw;
+    }
+
+    ${media.mobile} {
+      font-size: 4.006vw;
+      line-height: 6.308vw;
+    }
+    `,
+  bodyMBoldComfort: `
+  font-family: "Comfortaa", sans-serif;;
+  font-style: normal;
+  font-weight: 700;
+
+    ${media.fullWidth} {
+      font-size: 18px;
+      line-height: 27px;
+    }
+    
+    ${media.desktop} {
+      font-size: 1.25vw;
+      line-height: 1.875vw;
+    }
+
+    ${media.tablet} {
+      font-size: 1.758vw;
+      line-height: 2.637vw;
+    }
+
+    ${media.mobile} {
+      font-size: 4.206vw;
+      line-height: 6.308vw;
+    }
+    `,
+  bodySComfort: `
+  font-family: "Comfortaa", sans-serif;;
+  font-style: normal;
+  font-weight: 400;
+
+    ${media.fullWidth} {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    
+    ${media.desktop} {
+      font-size: 1.111vw;
+      line-height: 1.667vw;
+    }
+
+    ${media.tablet} {
+      font-size: 1.563vw;
+      line-height: 2.344vw;
+    }
+
+    ${media.mobile} {
+      font-size: 3.738vw;
+      line-height: 5.607vw;
+    }
+    `,
+  bodySBoldComfort: `
+  font-family: "Comfortaa", sans-serif;;
+  font-style: normal;
+  font-weight: 700;
+
+    ${media.fullWidth} {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    
+    ${media.desktop} {
+      font-size: 1.111vw;
+      line-height: 1.667vw;
+    }
+
+    ${media.tablet} {
+      font-size: 1.563vw;
+      line-height: 2.344vw;
+    }
+
+    ${media.mobile} {
+      font-size: 3.738vw;
+      line-height: 5.607vw;
+    }
+    `,
+}
+export default text

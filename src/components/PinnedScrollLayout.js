@@ -198,7 +198,7 @@ const TextImage = styled.img`
   }
 `
 const Text = styled.div`
-  ${text.bodyL}
+  ${text.bodyMComfort}
   text-align: flex-start;
   align-self: flex-start;
   margin: unset;
@@ -215,10 +215,10 @@ const Text = styled.div`
     border-radius: 6px;
   }
   ${media.tablet} {
-    ${text.m}
+    ${text.bodyMComfort}
   }
   ${media.mobile} {
-    ${text.m2}
+    ${text.bodyMComfort}
     ul {
       padding-left: 2.168vw;
     }

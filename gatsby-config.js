@@ -76,7 +76,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: [`Orbitron`, `Archivo`, `Roboto Mono`],
+        fonts: [`Orbitron`, `Archivo`, `Roboto Mono`,`Comfortaa`],
       },  
     },
     {

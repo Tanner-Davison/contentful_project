@@ -8,7 +8,7 @@ const SimpleCentered = ({ content }) => {
 
   return (
     <Wrapper>
-      <Headline>{content.headline}</Headline>
+      {content?.headline && <Headline>{content.headline}</Headline>}
     </Wrapper>
   )
 }

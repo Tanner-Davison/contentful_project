@@ -6,6 +6,7 @@ import colors from "styles/colors"
 import text from "styles/text"
 
 const ContentfulPost = ({ content }) => {
+  console.log(content)
   const siteTitle = content?.site?.siteMetadata?.title || `Title`
   const parsedBody =
     content?.body?.raw && JSON.parse(content?.body?.raw, null, 2)
@@ -30,19 +31,19 @@ const ContentfulPost = ({ content }) => {
   return (
     <Wrapper>
       <ImageAndContent $side={text.side} $orientation={image?.orientation}>
-      <AllTextWrapper>
-      {text.header && (
-        <Eyebrow $color={text.headerColor} $orientation={image?.orientation}>
-          {text.header}
-        </Eyebrow>
-      )}
-          {text.headline && (
-            <BodyHeadline $color={text.bodyHeaderColor}>
-              {text.headline}
-            </BodyHeadline>
+        <AllTextWrapper>
+          {text.eyebrow && (
+            <Eyebrow
+              $color={content.eyebrowColor}
+              $orientation={image?.orientation}
+            >
+              {text.eyebrow}
+            </Eyebrow>
           )}
-          {text.body && <Body $color={text.textColor}>{text.body}</Body>}
-      
+          {text.headline && (
+            <Header $color={text.bodyHeaderColor}>{text.headline}</Header>
+          )}
+          {text.body && <Body $color={content.bodyTextColor}>{text.body}</Body>}
         </AllTextWrapper>
         {image.url && (
           <HeroImage
@@ -58,47 +59,55 @@ const ContentfulPost = ({ content }) => {
 export default ContentfulPost
 const Eyebrow = styled.p`
   ${text.eyebrow}
-  margin:unset;
+  padding-left:0.278vw;
+  margin: unset;
   align-self: flex-start;
   /* padding-left: ${props => (props.$orientation ? "3.611vw" : "unset")}; */
   color: ${props => (props.$color ? colors[props.$color] : "inherit")};
   ${media.fullWidth} {
+    padding-left: 4px;
     /* padding-left: ${props => (props.$orientation ? "52px" : "unset")}; */
   }
   ${media.tablet} {
     /* padding-left: ${props => (props.$orientation ? ".55vw" : "unset")}; */
+    padding-left: 0.391vw;
   }
   ${media.mobile} {
-    padding-left: unset;
+    padding-left: 0.935vw;
     /* align-self: ${props => (props.$orientation ? "center" : "center")}; */
     text-align: center;
   }
 `
 const HeroImage = styled.img`
-  max-height: ${props => (props.$orientation ? "55.611vw" : "auto")};
-  width: ${props => (props.$orientation ? "27.778vw" : "40%")};
+  height:30vw;
+  width: 30vw;
   border-radius: 15px;
-
+  -webkit-box-shadow: 9px 7px 15px -2px #000000;
+  box-shadow: 9px 7px 15px -2px #000000;
+  align-self: flex-start;
   ${media.fullWidth} {
-    max-height: ${props => (props.$orientation ? "700px" : "auto")};
-    width: ${props => (props.$orientation ? "400px" : "40%")};
+    max-height: 27.778vw;
+    width: 27.778vw;
   }
 
   ${media.tablet} {
-    max-height: ${props => (props.$orientation ? "68.359vw" : "auto")};
-    width: ${props => (props.$orientation ? "39.063vw" : "45%")};
+    height: 39.063vw;
+    width: 39.063vw;
+    align-self: flex-start;
   }
 
   ${media.mobile} {
-    max-height: ${props => (props.$orientation ? "148vw" : "auto")};
-    width: ${props => (props.$orientation ? "75vw" : "90%")};
+    align-self: center;
+    height:70vw;
+    width:70vw;
+    margin-bottom: 5.841vw;
   }
 `
-const BodyHeadline = styled.h1`
-  ${text.h1}
+const Header = styled.h2`
+  ${text.h2}
   color: ${props => (props.$color ? colors[props.$color] : "inherit")};
-  margin:unset;
- 
+  margin: unset;
+
   ${media.fullWidth} {
   }
 
@@ -110,42 +119,55 @@ const BodyHeadline = styled.h1`
   }
 `
 const Body = styled.div`
-  ${text.bodyM};
-
+  ${text.bodyMComfort};
+  padding-left: 0.278vw;
   p {
-    color: ${props => (props.$color ? colors[props.$color] : "inherit")};
+    color: ${props=> props.$color ? colors[props.$color]: 'inherit'}
+   
   }
   b {
     font-weight: bolder;
     font-size: larger;
   }
+ 
   ${media.fullWidth} {
+    padding-left: 4px;
   }
 
   ${media.tablet} {
-    ${text.bodyM}
+    padding-left: 0.391vw;
   }
 
   ${media.mobile} {
-    ${text.bodyM}
+    padding-left: 0.935vw;
+    ul{
+      padding:0vw 0vw 0vw 5vw;
+
+    }
   }
 `
 const AllTextWrapper = styled.div`
-display: flex;
-flex-direction: column;
-width:31.25vw;
-${media.fullWidth} {
-  width:450px;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 45.278vw;
+  gap:1.042vw;
+  ${media.fullWidth} {
+    width: 652px;
+    gap:15px;
+  }
 
-${media.tablet} {
+  ${media.tablet} {
+    width: 45.063vw;
+    gap:1.465vw;
+  }
 
-}
-
-${media.mobile} {
-width:100%;
-align-items: flex-start;
-}
+  ${media.mobile} {
+    width: 100%;
+    gap:2.336vw;
+    align-items: flex-start;
+  }
 `
 const ImageAndContent = styled.div`
   position: relative;
@@ -154,20 +176,19 @@ const ImageAndContent = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5.069vw;
-  width: 80vw;
+  width: 100vw;
   ${media.fullWidth} {
     gap: 73px;
-    width: 1152px;
+    width: 100%;
   }
 
   ${media.tablet} {
-    gap: 7.129vw;
-    width: 80vw;
+    gap: 5.129vw;
+    width: 100vw;
   }
 
   ${media.mobile} {
-    width: 80vw;
-    gap: ${props => (props.$orientation ? "5vw" : "19.467vw")};
+    width: 88%;
     flex-direction: column-reverse;
   }
 `
@@ -175,4 +196,15 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* -webkit-box-shadow: 0px 21px 15px -18px #000000; 
+box-shadow: 0px 21px 15px -18px #000000; */
+  border-radius: 25px;
+  ${media.fullWidth} {
+  }
+
+  ${media.tablet} {
+  }
+  ${media.mobile} {
+   
+  }
 `
