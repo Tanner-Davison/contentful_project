@@ -2,22 +2,24 @@ import React from "react"
 import styled from "styled-components"
 import media from "styles/media"
 import text from "styles/text"
-import {scrollToElement} from "../utils/scrollTo"
+import { scrollToElement } from "../utils/scrollTo"
 
 const FwBgCenteredContent = ({ content }) => {
   console.log(content)
-  const handleClick =()=>{
-    scrollToElement("#target")
+  const handleClick = (scrollTarget) => {
+    scrollToElement(scrollTarget)
   }
   return (
     <Wrapper $bgimg={content?.bgImage?.url}>
       <ContentDiv $orientation={content?.rowOrColumn}>
-        <Header>
-          <Eyebrow>{content?.eyebrow}</Eyebrow>
-          {content?.header}
-        </Header>
-        <Button type='button'onClick={handleClick}>Scroll to Start</Button>
-        <Body>{content?.body?.body}</Body>
+        {content?.eyebrow && <Eyebrow>{content?.eyebrow}</Eyebrow>}
+        {content?.header && <Header>{content?.header}</Header>}
+        {content?.scrollToText && content?.scrollToTarget &&(
+          <Button type="button" onClick={()=>handleClick(content?.scrollToTarget)}>
+            {content?.scrollToText}
+          </Button>
+        )}
+        {content?.body?.body && <Body>{content?.body?.body}</Body>}
       </ContentDiv>
     </Wrapper>
   )
@@ -25,7 +27,24 @@ const FwBgCenteredContent = ({ content }) => {
 
 export default FwBgCenteredContent
 const Button = styled.button`
-z-index: 3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  ${text.bodyMBold};
+  z-index: 3;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 8px;
+  padding: 2px 8px;
+  border: 2px outset black;
+  margin-top: 10px;
+  &:hover {
+    transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 `
 const Body = styled.p`
   text-align: center;
@@ -68,9 +87,10 @@ const Header = styled.div`
 `
 const Eyebrow = styled.p`
   ${text.eyebrow}
+  color:white;
 `
 const ContentDiv = styled.div`
-z-index: 3;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,15 +98,16 @@ z-index: 3;
   backdrop-filter: blur(0.208vw);
   background-color: rgba(0, 0, 0, 0.4);
   width: 35%;
-  -webkit-box-shadow: inset 1px -1px 19px 1px #ffffff, 1px 0px 15px 1px #FF8000;
-  box-shadow: inset 1px -1px 19px 1px #ffffff, 1px 0px 15px 1px #FF8000 ;
+  -webkit-box-shadow: inset 1px -1px 19px 1px #ffffff, 1px 0px 15px 1px #ff8000;
+  box-shadow: inset 1px -1px 19px 1px #ffffff, 1px 0px 15px 1px #ff8000;
   border-radius: 1.736vw;
   padding: 1.042vw 1.736vw;
   ${media.fullWidth} {
     backdrop-filter: blur(3px);
+    gap: 10px;
     -webkit-box-shadow: inset 1px -1px 19px 1px #ffffff,
       1px -1px 25px 1px #ccddaa;
-    box-shadow: inset 1px -1px 19px 1px #ffffff, 1px 0px 15px 1px #FF8000;
+    box-shadow: inset 1px -1px 19px 1px #ffffff, 1px 0px 15px 1px #ff8000;
     border-radius: 25px;
     padding: 15px 25px;
   }
@@ -97,9 +118,9 @@ z-index: 3;
     border-radius: 3.418vw;
     backdrop-filter: blur(5px);
     -webkit-box-shadow: inset 0.098vw -0.098vw 1.855vw 0.098vw #ffffff,
-      0.098vw -0.098vw 2.441vw 0.098vw #FF8000;
+      0.098vw -0.098vw 2.441vw 0.098vw #ff8000;
     box-shadow: inset 0.098vw -0.098vw 1.855vw 0.098vw #ffffff,
-      0.098vw -0.098vw 2.441vw 0.098vw #FF8000;
+      0.098vw -0.098vw 2.441vw 0.098vw #ff8000;
   }
 
   ${media.mobile} {
@@ -107,9 +128,9 @@ z-index: 3;
     border-radius: 8.178vw;
     backdrop-filter: blur(5px);
     -webkit-box-shadow: inset 0.234vw -0.234vw 4.439vw 0.234vw #ffffff,
-      0.234vw -0.234vw 5.841vw 0.234vw #FF8000;
+      0.234vw -0.234vw 5.841vw 0.234vw #ff8000;
     box-shadow: inset 0.234vw -0.234vw 4.439vw 0.234vw #ffffff,
-      0.234vw -0.234vw 5.841vw 0.234vw #FF8000;
+      0.234vw -0.234vw 5.841vw 0.234vw #ff8000;
   }
 `
 const Wrapper = styled.div`

@@ -6,7 +6,7 @@ const media = {
   apple: "@supports (-webkit-touch-callout: none)",
   mobile: `@media screen and (max-width: ${mobile}px)`,
   tablet: `@media screen and (min-width: ${
-    mobile + 1
+    mobile + 1 
   }px) and (max-width: ${tablet}px)`,
   tabletWide: `@media screen and (min-width: ${
     mobile + 1

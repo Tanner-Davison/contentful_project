@@ -82,7 +82,9 @@ export const query = graphql`
           body{
             body
           }
+          scrollToText
           rowOrColumn
+          scrollToTarget
           bgImage{
             url
           }

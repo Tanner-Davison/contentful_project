@@ -23,7 +23,6 @@ const PinnedScrollLayout = ({ content }) => {
   const textParagraphs = [par1, par2, par3, par4]
 
   useEffect(() => {
-
     ScrollTrigger.create({
       trigger: ".gallery",
       start: "top top",
@@ -57,7 +56,6 @@ const PinnedScrollLayout = ({ content }) => {
       })
     })
     return () => {
-     
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, [])
@@ -65,8 +63,8 @@ const PinnedScrollLayout = ({ content }) => {
   return (
     <Wrapper>
       <CautionTape />
-      <Gallery  className="gallery">
-        <Left id='target' className='target'>
+      <Gallery className="gallery">
+        <Left id="pinnedScrollTarget" className="target">
           <DetailsWrapper className="desktopContent">
             {content?.leftHeaders.map((headline, index) => {
               return (
@@ -117,15 +115,14 @@ const Photos = styled.img`
 
   ${media.tablet} {
     width: 90%;
-  height: 100%;
+    height: 100%;
   }
-
 
   ${media.mobile} {
   }
 `
 const DesktopPhotos = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -151,7 +148,7 @@ position: relative;
 `
 
 const Right = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   width: 40%;
@@ -166,7 +163,7 @@ position: relative;
 
   ${media.tablet} {
     height: 100vh;
-    width:50%;
+    width: 50%;
   }
 
   ${media.mobile} {
@@ -206,7 +203,7 @@ const Text = styled.div`
   align-self: flex-start;
   margin: unset;
   border-radius: 0.417vw;
-  
+
   b {
     color: ${colors.darkOrange};
   }
@@ -218,7 +215,6 @@ const Text = styled.div`
     border-radius: 6px;
   }
   ${media.tablet} {
-    
     ${text.m}
   }
   ${media.mobile} {
@@ -233,7 +229,7 @@ const Headline = styled.h2`
   align-self: flex-start;
   margin: unset;
   border-radius: 0.417vw;
- 
+
   ${media.fullWidth} {
     border-radius: 6px;
     padding: 10px;
@@ -277,9 +273,9 @@ const Details = styled.div`
 `
 
 const DetailsWrapper = styled.div`
-position: relative;
-display: flex;
-flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   > :first-child {
     border-top: unset;
     justify-content: center;
@@ -291,7 +287,7 @@ flex-direction: column;
   }
 
   ${media.tablet} {
-    width:75%;
+    width: 75%;
   }
 
   ${media.mobile} {
@@ -304,19 +300,18 @@ flex-direction: column;
 `
 
 const Left = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   width: 50%;
 
   ${media.fullWidth} {
-    width:50%;
+    width: 50%;
   }
 
   ${media.tablet} {
     width: 50%;
-   
   }
 
   ${media.mobile} {
@@ -329,25 +324,22 @@ const Gallery = styled.div`
   flex-direction: row;
   background: black;
   justify-content: space-around;
- 
+
   width: 100vw;
   color: white;
 
   ${media.fullWidth} {
-    
     width: 1440px;
   }
 
   ${media.tablet} {
-    width:100vw;
-    
+    width: 100vw;
   }
 
   ${media.mobile} {
     gap: unset;
-    width:100vw;
+    width: 100vw;
     padding-top: 11.682vw;
-    
   }
 `
 const Wrapper = styled.div`
@@ -355,5 +347,5 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: black;
-  width: 100vw;
+ j
 `
