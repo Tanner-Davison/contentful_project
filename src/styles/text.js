@@ -1114,12 +1114,12 @@ ${media.mobile} {
       font-weight: 400;
     
         ${media.fullWidth} {
-          font-size: 19.5px;
-          line-height: 32px;
+          font-size: 51px;
+          line-height: 45px;
         }
         
         ${media.desktop} {
-          font-size: 3.525vw;
+          font-size: 3.542vw;
           line-height: 3.125vw;
         }
     

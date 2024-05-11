@@ -17,6 +17,7 @@ useEffect(() => {
   }, []);
 
   return (
+      <BackgroundBlack>
     <Wrapper>
        <Video ref={videoRef} autoPlay loop muted>
         <source src={videoSrc} type='video/mp4'/>
@@ -26,28 +27,34 @@ useEffect(() => {
       <Content>
         <Header>{content?.header}</Header>
         <BodyDiv>{content?.videoPageBody}</BodyDiv>
-        <Author>{content?.quotedBy}-</Author>
+        <Author>- {content?.quotedBy}</Author>
       </Content>
       <LearnMore>{content?.linkText}</LearnMore>
       </ContentWrapper>
     </Wrapper>
+      </BackgroundBlack>
   )
 }
 
 export default VideoBgFeature
 const LearnMore = styled.div`
+cursor: pointer;
 ${text.bodyMBold}
 color:white;
 display: flex;
 align-items: center;
 justify-content: center;
 height:fit-content;
-margin:0px 0px 0px 50px;
-padding:3px 14px;
-border:5px solid whitesmoke;
-border-radius:20px;
 align-self: center;
-color:white;
+margin:0px 0px 0px 50px;
+padding:2px 14px;
+border:2px solid whitesmoke;
+border-radius:20px;
+transition:transform .3s ease-in-out;
+&:hover{
+  transform:scale(1.1);
+}
+z-index: 2;
 `
 const Author = styled.p`
 ${text.bodyMQuigley}
@@ -59,12 +66,35 @@ const BodyDiv = styled.div`
 ${text.bodyM}
 width:80%;
 text-align:right;
+${media.fullWidth} {
+  width:60%;
+
+}
+
+${media.tablet} {
+
+}
+
+${media.mobile} {
+
+}
 `
 const Header = styled.h2`
 ${text.h2}
 margin:unset;
-margin-bottom:0.694vw;
 text-align: right;
+margin-bottom:0.694vw;
+${media.fullWidth} {
+  margin-bottom:10px;
+}
+
+${media.tablet} {
+
+}
+
+${media.mobile} {
+
+}
 `
 const Content = styled.div`
 position: relative;
@@ -72,12 +102,26 @@ display: flex;
 justify-content: center;
 align-items: flex-end;
 flex-direction: column;
-padding:50px 1vw 3.472vw 3.472vw;
+padding:50px 0.972vw 3.472vw 3.472vw;
 color:white;
 border-radius:0px;
 border-right: 3px ridge white;
 width: 50%;
 gap:10px;
+${media.fullWidth} {
+  border-radius:0px;
+border-right: 3px ridge white;
+  padding:3.472vw 14px 50px 50px;
+  gap:10px;
+}
+
+${media.tablet} {
+
+}
+
+${media.mobile} {
+
+}
 `
 const Video = styled.video`
   position: absolute;
@@ -85,20 +129,44 @@ const Video = styled.video`
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: -1;
+  object-fit: fill;
+  z-index: 0;
   filter: grayscale(75%); 
   `;
   const ContentWrapper = styled.div`
+
   display: flex;
   flex-direction:row;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
   `
   const Wrapper = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    max-width: 1440px;
+    width:100%;
     height: 50vh; 
     overflow: hidden;
+    ${media.fullWidth} {
+    width:100%;
+    }
+    
+    ${media.tablet} {
+    
+    }
+    
+    ${media.mobile} {
+    
+    }
   `;
+  const BackgroundBlack = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${colors.grey500};
+  width: 100vw;
+  height: auto;
+  `
