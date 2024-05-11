@@ -119,11 +119,11 @@ const Header = styled.h2`
   }
 `
 const Body = styled.div`
-  ${text.bodyMComfort};
+  ${text.bodyM};
   padding-left: 0.278vw;
+
   p {
-    color: ${props=> props.$color ? colors[props.$color]: 'inherit'}
-   
+    color: ${props=> props.$color ? colors[props.$color]: 'inherit'};
   }
   b {
     font-weight: bolder;
@@ -136,6 +136,15 @@ const Body = styled.div`
 
   ${media.tablet} {
     padding-left: 0.391vw;
+    width:95%;
+    p{
+    margin-block-start: .5em;
+    margin-block-end: .5em;
+    }
+    ul{
+      padding:0px 0px 0px 1.89vw;
+
+    }
   }
 
   ${media.mobile} {
@@ -159,8 +168,8 @@ const AllTextWrapper = styled.div`
   }
 
   ${media.tablet} {
-    width: 45.063vw;
-    gap:1.465vw;
+    width: 47.063vw;
+    gap:1vw;
   }
 
   ${media.mobile} {

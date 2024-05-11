@@ -119,6 +119,14 @@ export const query = graphql`
             }
           }
         }
+        ... on ContentfulFullWidthVideoBackground {
+            id
+            header
+            videoPageBody
+            linkText
+            quotedBy
+            spacing
+          }
       }
     }
   }
