@@ -6,7 +6,6 @@ import colors from "styles/colors"
 import text from "styles/text"
 
 const ContentfulPost = ({ content }) => {
-  console.log(content)
   const siteTitle = content?.site?.siteMetadata?.title || `Title`
   const parsedBody =
     content?.body?.raw && JSON.parse(content?.body?.raw, null, 2)
