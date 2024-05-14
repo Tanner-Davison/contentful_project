@@ -8,7 +8,7 @@ import recordSpinning from '../Videos/recordSpinning.mp4';
 const VideoBgFeature = ({content}) => {
  const videoSrc = recordSpinning;
  const videoRef = useRef(null);
- console.log(content)
+
 
 useEffect(() => {
     if (videoRef.current) {
