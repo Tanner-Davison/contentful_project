@@ -16,7 +16,6 @@ const HomeIndex = ({ data }) => {
       <PageListWrapper>
         {posts.map(post => {
           const title = post?.node?.title || post?.node?.slug
-          console.log(post.node?.about)
           return (
             <Wrapper key={post?.node?.slug}>
               <Linked to={`/${post?.node?.slug}`} itemProp="url">
@@ -41,11 +40,25 @@ const HomeIndex = ({ data }) => {
 
 export default HomeIndex
 const GIPH = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 8.681vw;
+  height: 8.681vw;
   align-self: center;
   justify-self: center;
   border-radius: 25px;
+  ${media.fullWidth} {
+    width: 125px;
+    height: 125px;
+  }
+
+  ${media.tablet} {
+    width: 12.207vw;
+    height: 12.207vw;
+  }
+
+  ${media.mobile} {
+    width: 29.206vw;
+    height: 29.206vw;
+  }
 `
 const About = styled.p`
   ${text.bodyM}
@@ -95,14 +108,14 @@ const Wrapper = styled.div`
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.06);
-    background-color: rgba(20, 0, 300, 0.2);
-    border: 2px ridge rgba(20, 0, 200, 0.4);
+    transform: scale(1.03) scaleX(1.04) ;
+    background-color: rgba(0, 0, 300, 0.2);
+    border: 0.069vw outset rgba(20, 0, 200, 0.6);
     -webkit-box-shadow: 1px 11px 15px 2px rgba(0, 0, 0, 0.67);
     box-shadow: 1px 11px 15px 2px rgba(0, 0, 0, 0.67);
   }
-  -webkit-box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.66);
-  box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.66);
+  -webkit-box-shadow: 0px 9px 15px 2px rgba(0,0,0,0.3); 
+box-shadow: 0px 9px 15px 2px rgba(0,0,0,0.3);
   ${media.fullWidth} {
     padding: 0px 29px;
   }
