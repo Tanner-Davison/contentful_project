@@ -21,7 +21,16 @@ const Layout = ({ location = null, title, children }) => {
       </Link>
     )
   } else {
-    header = <>{title && <HomeIcon src={homeIcon} />}</>
+    header = (
+      <>
+        {title && (
+          <>
+            <LinkName>{title}</LinkName> 
+            <HomeIcon src={homeIcon} />
+          </>
+        )}
+      </>
+    )
   }
 
   return (
@@ -32,18 +41,11 @@ const Layout = ({ location = null, title, children }) => {
           onMouseEnter={() => setHomeIcon(homeFilled)}
           onMouseLeave={() => setHomeIcon(homeOutline)}
         >
-          <Home>
-            {header}
-            <LinkName>Home</LinkName>
-          </Home>
+          <Home>{header}</Home>
         </Link>
       </Nav>
       <main>{children}</main>
-      <Footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <A href="https://www.gatsbyjs.com">Gatsby by Tanner</A>
-      </Footer>
+      <Footer></Footer>
     </div>
   )
 }

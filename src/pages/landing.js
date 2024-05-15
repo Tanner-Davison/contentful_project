@@ -10,7 +10,7 @@ const BlogIndex = ({ data, location }) => {
   const title = contentfulPage?.title
 
   return (
-    <Layout title={"home"}>
+    <Layout title={"Home"}>
       <ol style={{ listStyle: `none` }}>
         <li key={contentfulPage?.id}>
           <article
@@ -39,7 +39,7 @@ export const pageQuery = graphql`
   {
     contentfulPage {
       id
-      header
+      about
     }
   }
 `

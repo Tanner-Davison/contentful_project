@@ -1124,13 +1124,13 @@ ${media.mobile} {
         }
     
         ${media.tablet} {
-          font-size: 2vw;
-          line-height: 2.9vw;
+          font-size:5.5vw;
+          line-height: 6vw;
         }
     
         ${media.mobile} {
-          font-size: 4.322vw;
-          line-height: 6.808vw;
+          font-size: 9.522vw;
+          line-height: 7.808vw;
         }
         `,
 }

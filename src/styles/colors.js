@@ -44,6 +44,7 @@ const colors = {
   grey25:"#F6F7F7",
   white: "#FFFFFF",
   black: '#010000',
+  transparentGray: ' linear-gradient(90deg, rgba(208, 208, 208, 1) 10%, rgba(87, 87, 87, 1) 100%)',
   purpleGradient: 'linear-gradient(270deg, #945AEE 0%, rgba(148, 90, 238, 0.4) 100%);',
   orangeGradient: 'linear-gradient(270deg, #FF5100 0%, rgba(255, 81, 0, 0.4) 100%);',
   greyGradient: 'linear-gradient(270deg, #000000 0%, rgba(0, 0, 0, 0.4) 100%);',
