@@ -4,6 +4,7 @@ import media from 'styles/media';
 import colors from 'styles/colors';
 import text from 'styles/text';
 import recordSpinning from '../Videos/recordSpinning.mp4';
+import gsap from 'gsap'
 
 const VideoBgFeature = ({content}) => {
  const videoSrc = recordSpinning;
@@ -14,6 +15,12 @@ useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.8;
     }
+    const contentMusic = document.querySelector('.contentMusic')
+    const buttonMusic = document.querySelector('.musicButton')
+
+    const tl = gsap.timeline({paused:false})
+  .from(contentMusic,{xPercent:200, duration:2, ease:'back.out'})
+  .from(buttonMusic,{opacity:0})
   }, []);
 
   return (
@@ -24,12 +31,12 @@ useEffect(() => {
         Your browser does not support the video tag.
       </Video>
       <ContentWrapper>
-      <Content>
+      <Content className='contentMusic'>
         <Header>{content?.header}</Header>
         <BodyDiv>{content?.videoPageBody}</BodyDiv>
         <Author>- {content?.quotedBy}</Author>
       </Content>
-      <LearnMore>{content?.linkText}</LearnMore>
+      <LearnMore className='musicButton'>{content?.linkText}</LearnMore>
       </ContentWrapper>
     </Wrapper>
       </BackgroundBlack>
