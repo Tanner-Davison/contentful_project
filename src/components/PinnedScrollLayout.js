@@ -347,5 +347,4 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: black;
- j
-`
+`;
