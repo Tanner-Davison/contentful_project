@@ -26,6 +26,7 @@ const FwBgCenteredContent = ({ content }) => {
 }
 
 export default FwBgCenteredContent
+
 const Button = styled.button`
   cursor: pointer;
   display: flex;
@@ -46,6 +47,7 @@ const Button = styled.button`
     background-color: rgba(0, 0, 0, 0.9);
   }
 `
+
 const Body = styled.p`
   text-align: center;
   ${text.bodyM}
@@ -63,6 +65,7 @@ const Body = styled.p`
     width: 80%;
   }
 `
+
 const Header = styled.div`
   display: flex;
   flex-direction: column;
